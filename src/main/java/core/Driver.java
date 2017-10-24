@@ -45,15 +45,15 @@ public class Driver {
         if (Driver.driver == null) {
             switch (System.getProperty("test.browser"))  {
                 case "chrome":
-                    System.setProperty("webdriver.chrome.driver", "C:\\Users\\Daria_Roid\\Desktop\\Coding\\Selenium\\chrome\\chromedriver.exe");
+                    System.setProperty("webdriver.chrome.driver", "src/main/resources/chrome/chromedriver.exe");
                     driver = new ChromeDriver();
                     break;
                 case "firefox":
-                    System.setProperty("webdriver.gecko.driver", "C:\\Users\\Daria_Roid\\Desktop\\Coding\\Selenium\\firefox\\geckodriver.exe");
+                    System.setProperty("webdriver.gecko.driver", "src/main/resources/chrome/firefox/geckodriver.exe");
                     driver = new FirefoxDriver();
                     break;
                 case "iexplore":
-                    System.setProperty("webdriver.ie.driver", "C:\\Users\\Daria_Roid\\Desktop\\Coding\\Selenium\\ie\\IEDriverServer.exe");
+                    System.setProperty("webdriver.ie.driver", "src/main/resources/chrome/ie/IEDriverServer.exe");
                     driver = new InternetExplorerDriver();
                     break;
                 default:
