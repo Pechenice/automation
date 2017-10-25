@@ -29,25 +29,8 @@ public class Driver {
     }
 
     protected static void init() {
-        Properties properties = new Properties();
-        FileInputStream inputStream;
-        try {
-            inputStream = new FileInputStream("test.properties");
-            properties.load(inputStream);
-        } catch (IOException exception) {
-            exception.printStackTrace();
-            Assert.fail(exception.getMessage());
-        }
-        @SuppressWarnings("unchecked")
-        Enumeration<String> propertyNames = (Enumeration<String>) properties.propertyNames();
-        while (propertyNames.hasMoreElements()) {
-            String key = propertyNames.nextElement();
-            System.setProperty(key, properties.getProperty(key));
-            Reporter.log(key + " - " + properties.getProperty(key), 2, true);
-        }
-
         if (Driver.driver == null) {
-            switch (System.getProperty("test.browser"))  {
+            switch (PropertiesContainer.get("test.browser"))  {
                 case "chrome":
                     ChromeDriverManager.getInstance().setup();
                     driver = new ChromeDriver();

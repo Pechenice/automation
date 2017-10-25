@@ -1,18 +1,20 @@
 package pages;
 
+import controls.TextControl;
+
 import org.openqa.selenium.By;
 import static core.Locators.*;
 import static helpers.FinderOfElements.*;
 
 public class PikabuHomePage {
 
-    private static By loginField = get("PikabuHomePage.loginField");
-    private static By passwordField = get("PikabuHomePage.passwordField");
+    private TextControl loginField = TextControl.findTextByLocator("PikabuHomePage.loginField");
+    private TextControl passwordField = TextControl.findTextByLocator("PikabuHomePage.passwordField");
     private static By signInButton = get("PiPikabuHomePage.signInButton");
 
-    public static void login(String login, String password) {
-        findElement(loginField).sendKeys(login);
-        findElement(passwordField).sendKeys(password);
+    public void login(String login, String password) {
+        loginField.sendKeys(login);
+        passwordField.sendKeys(password);
         findElement(signInButton).click();
     }
 }

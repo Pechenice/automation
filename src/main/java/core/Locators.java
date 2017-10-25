@@ -21,6 +21,7 @@ public class Locators {
             System.out.println(e.getMessage());
         }
     }
+
     public static By get(String locatorName) {
         String propertyValue = locators.getProperty(locatorName);
         String[] locatorItems = propertyValue.split("=", 2);

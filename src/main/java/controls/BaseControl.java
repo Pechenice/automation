@@ -1,46 +1,44 @@
 package controls;
 
 import core.Driver;
+import core.PropertiesContainer;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BaseControl {
+public abstract class BaseControl {
+    protected WebElement element;
+    protected By by;
 
-    public static BaseControl click(By by) {
-        return new BaseControl(Driver.get().findElement(by).click());
-        WebElement element = Driver.get().findElement(by);
+    public void click () {
+        element.click();
     }
 
-    public static Boolean waitForElement(By by) {
-        WebElement some = new WebDriverWait(Driver.get(), Long.parseLong(System.getProperty("test.timeouts"))).until(ExpectedConditions.presenceOfElementLocated(by)).size > 0;
-        if (some != null) {
-            return true;
-        } else {
-            return false;
-        }
-
+    public void waitForElement() {
+//        new WebDriverWait(Driver.get(), Long.parseLong(PropertiesContainer.get("test.timeout"))).until(ExpectedConditions.presenceOfElementLocated(by));
+//        if () {
+//            return true;
+//        } else return false;
     }
 
-    public static Boolean waitForVisability () {
-
-        return true;
-    }
-
-    public static Boolean waitForInvisible() {
-        return true;
-    }
-
-    public static Boolean elementIsClickable () {
-        return true;
-    }
-
-    public static BaseControl elementIsPresent() {
+    public void waitForVisability () {
 
     }
 
-    public static BaseControl elementIsNotPresent () {
-        return BaseControl();
+    public void waitForInvisible() {
+
     }
+
+    public void elementIsClickable () {
+
+    }
+
+    public void elementIsPresent() {
+
+    }
+
+    public void elementIsNotPresent () {
+}
 }

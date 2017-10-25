@@ -8,17 +8,13 @@ import java.util.Map;
 import java.util.Properties;
 
 public class PropertiesContainer {
-    private static String property;
+    private static final Properties property = init();
 
-    public static PropertiesContainer get() {
-        some_search
-
-        Map<String, String> loadedProperties = (Map<String,String> properties.lo);
-
-        return new PropertiesContainer();
+    public static String get(String key) {
+        return property.getProperty(key);
     }
 
-    private void init() {
+    private static Properties init() {
         Properties properties = new Properties();
         FileInputStream inputStream;
         try {
@@ -27,7 +23,7 @@ public class PropertiesContainer {
         } catch (IOException e) {
             e.printStackTrace();
             Assert.fail(e.getMessage());
-        }
+        } return properties;
     }
 
 
