@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-
 import static core.Locators.*;
 import static helpers.FinderOfElements.*;
 
