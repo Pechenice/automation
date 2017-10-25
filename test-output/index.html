@@ -90,7 +90,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,6 +102,11 @@
                       <span>
                         <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Default_Suite" title="GoToTest" hash-for-method="enterSite">enterSite</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_Suite" title="GoToTest" hash-for-method="goTo">goTo</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_Suite -->
@@ -129,6 +134,13 @@
                   <span class="method-name">enterSite</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="goTo">
+                  </a> <!-- goTo -->
+                  <span class="method-name">goTo</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Default_Suite-class-passed -->
         </div> <!-- panel Default_Suite -->
@@ -143,11 +155,7 @@
 &lt;suite verbose=&quot;2&quot; name=&quot;Default Suite&quot;&gt;
   &lt;test name=&quot;MyProject&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;GoToTest&quot;&gt;
-        &lt;methods&gt;
-          &lt;include name=&quot;enterSite&quot;/&gt;
-        &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- GoToTest --&gt;
+      &lt;class name=&quot;GoToTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- MyProject --&gt;
 &lt;/suite&gt; &lt;!-- Default Suite --&gt;
@@ -187,16 +195,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'enterSite')
 data.setCell(0, 2, 'GoToTest')
-data.setCell(0, 3, 169378);
+data.setCell(0, 3, 169282);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'goTo')
+data.setCell(1, 2, 'GoToTest')
+data.setCell(1, 3, 168811);
 window.suiteTableData['Default_Suite']= { tableData: data, tableDiv: 'times-div-Default_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 2 minutes</span>
+              <span class="suite-total-time">Total running time: 5 minutes</span>
               <div id="times-div-Default_Suite">
               </div> <!-- times-div-Default_Suite -->
             </div> <!-- times-div -->
@@ -211,16 +223,9 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">1 ignored method</span>
+            <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">GoToTest</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">goTo</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Default_Suite" class="panel">
@@ -236,11 +241,15 @@ return data;
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">enterSite</span>
-                <span class="method-start">4451 ms</span>
+                <span class="method-start">4981 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">goTo</span>
+                <span class="method-start">174264 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-test after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">173831 ms</span>
+                <span class="method-start">343077 ms</span>
               </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
     <line>
       <![CDATA[test.timeouts - 30]]>
@@ -11,12 +11,12 @@
       <![CDATA[test.browser - chrome]]>
     </line>
   </reporter-output>
-  <suite name="Default Suite" duration-ms="174776" started-at="2017-10-25T07:43:36Z" finished-at="2017-10-25T07:46:31Z">
+  <suite name="Default Suite" duration-ms="344048" started-at="2017-10-25T09:06:14Z" finished-at="2017-10-25T09:11:58Z">
     <groups>
     </groups>
-    <test name="MyProject" duration-ms="174776" started-at="2017-10-25T07:43:36Z" finished-at="2017-10-25T07:46:31Z">
+    <test name="MyProject" duration-ms="344048" started-at="2017-10-25T09:06:14Z" finished-at="2017-10-25T09:11:58Z">
       <class name="GoToTest">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:GoToTest@35851384]" name="setUp" is-config="true" duration-ms="4441" started-at="2017-10-25T10:43:36Z" finished-at="2017-10-25T10:43:41Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:GoToTest@725bef66]" name="setUp" is-config="true" duration-ms="4966" started-at="2017-10-25T12:06:14Z" finished-at="2017-10-25T12:06:19Z">
           <reporter-output>
             <line>
               <![CDATA[test.timeouts - 30]]>
@@ -29,11 +29,15 @@
             </line>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="enterSite()[pri:0, instance:GoToTest@35851384]" name="enterSite" duration-ms="169378" started-at="2017-10-25T10:43:41Z" finished-at="2017-10-25T10:46:30Z">
+        <test-method status="PASS" signature="enterSite()[pri:0, instance:GoToTest@725bef66]" name="enterSite" duration-ms="169282" started-at="2017-10-25T12:06:19Z" finished-at="2017-10-25T12:09:08Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- enterSite -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:GoToTest@35851384]" name="tearDown" is-config="true" duration-ms="943" started-at="2017-10-25T10:46:30Z" finished-at="2017-10-25T10:46:31Z">
+        <test-method status="PASS" signature="goTo()[pri:0, instance:GoToTest@725bef66]" name="goTo" duration-ms="168811" started-at="2017-10-25T12:09:08Z" finished-at="2017-10-25T12:11:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goTo -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:GoToTest@725bef66]" name="tearDown" is-config="true" duration-ms="970" started-at="2017-10-25T12:11:57Z" finished-at="2017-10-25T12:11:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
