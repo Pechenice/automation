@@ -13,6 +13,6 @@ public class GoToTest extends TestBase {
     @Test
     public static void enterSite() {
         Driver.get().get(System.getProperty("test.baseUrl"));
-        PikabuHomePage.login("aerilae", "NT44Mr34rJ");
+        PikabuHomePage.login("something", "pass12345");
     }
 }

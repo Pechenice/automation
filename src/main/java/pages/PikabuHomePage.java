@@ -11,7 +11,7 @@ public class PikabuHomePage {
     private static By passwordField = get("PikabuHomePage.passwordField");
     private static By signInButton = get("PiPikabuHomePage.signInButton");
 
-    public static void  login(String login, String password) {
+    public static void login(String login, String password) {
         findElement(loginField).sendKeys(login);
         findElement(passwordField).sendKeys(password);
         findElement(signInButton).click();
