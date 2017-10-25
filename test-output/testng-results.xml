@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[test.timeouts - 30]]>
+    </line>
+    <line>
+      <![CDATA[test.baseUrl - https://pikabu.ru/]]>
+    </line>
+    <line>
+      <![CDATA[test.browser - chrome]]>
+    </line>
+  </reporter-output>
+  <suite name="Default Suite" duration-ms="174776" started-at="2017-10-25T07:43:36Z" finished-at="2017-10-25T07:46:31Z">
+    <groups>
+    </groups>
+    <test name="MyProject" duration-ms="174776" started-at="2017-10-25T07:43:36Z" finished-at="2017-10-25T07:46:31Z">
+      <class name="GoToTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:GoToTest@35851384]" name="setUp" is-config="true" duration-ms="4441" started-at="2017-10-25T10:43:36Z" finished-at="2017-10-25T10:43:41Z">
+          <reporter-output>
+            <line>
+              <![CDATA[test.timeouts - 30]]>
+            </line>
+            <line>
+              <![CDATA[test.baseUrl - https://pikabu.ru/]]>
+            </line>
+            <line>
+              <![CDATA[test.browser - chrome]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="enterSite()[pri:0, instance:GoToTest@35851384]" name="enterSite" duration-ms="169378" started-at="2017-10-25T10:43:41Z" finished-at="2017-10-25T10:46:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- enterSite -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:GoToTest@35851384]" name="tearDown" is-config="true" duration-ms="943" started-at="2017-10-25T10:46:30Z" finished-at="2017-10-25T10:46:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- GoToTest -->
+    </test> <!-- MyProject -->
+  </suite> <!-- Default Suite -->
+</testng-results>
