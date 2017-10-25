@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b13ffc78-ef1b-4d62-b2fe-1a729e86b76e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/chrome/chromedriver.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/firefox/geckodriver.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ie/IEDriverServer.exe" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/pages/HomePage.java" afterPath="$PROJECT_DIR$/src/main/java/pages/PikabuHomePage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/core/Driver.class" afterPath="$PROJECT_DIR$/target/classes/core/Driver.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/pages/HomePage.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/core/Locators.class" afterPath="$PROJECT_DIR$/target/classes/core/Locators.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/GoToTest.class" afterPath="$PROJECT_DIR$/target/test-classes/GoToTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/Locators.java" afterPath="$PROJECT_DIR$/src/main/java/core/Locators.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/GoToTest.java" afterPath="$PROJECT_DIR$/src/test/java/GoToTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,8 +31,8 @@
       <file leaf-file-name="GoToTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/GoToTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="221">
+              <caret line="13" column="36" lean-forward="false" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -47,8 +43,8 @@
       <file leaf-file-name="Locators.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/core/Locators.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+            <state relative-caret-position="190">
+              <caret line="35" column="56" lean-forward="false" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -59,8 +55,8 @@
       <file leaf-file-name="PikabuHomePage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pages/PikabuHomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="18" lean-forward="false" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+            <state relative-caret-position="207">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,8 +67,8 @@
       <file leaf-file-name="locators.properties" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/locators.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="51" lean-forward="true" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+            <state relative-caret-position="51">
+              <caret line="3" column="69" lean-forward="true" selection-start-line="3" selection-start-column="69" selection-end-line="3" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -163,8 +159,8 @@
         <option value="$PROJECT_DIR$/src/main/java/heplers/Waiter.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/Locators.java" />
         <option value="$PROJECT_DIR$/src/main/java/heplers/FinderOfElements.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pages/PikabuHomePage.java" />
         <option value="$PROJECT_DIR$/src/test/java/GoToTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pages/PikabuHomePage.java" />
         <option value="$PROJECT_DIR$/src/main/resources/locators.properties" />
       </list>
     </option>
@@ -553,39 +549,46 @@
       <option name="project" value="LOCAL" />
       <updated>1508854012693</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added test for login (currently wrong selectors)">
+      <created>1508858919964</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1508858919964</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
     <history-entry file="GoToTest_enterSite - 2017.10.24 at 18h 24m 31s.xml">
       <configuration name="GoToTest.enterSite" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="GoToTest_goTo - 2017.10.24 at 16h 30m 53s.xml">
-      <configuration name="GoToTest.goTo" configurationId="TestNG" />
+    <history-entry file="GoToTest_enterSite - 2017.10.25 at 10h 10m 24s.xml">
+      <configuration name="GoToTest.enterSite" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="GoToTest_goTo - 2017.10.24 at 16h 39m 29s.xml">
-      <configuration name="GoToTest.goTo" configurationId="TestNG" />
+    <history-entry file="GoToTest_enterSite - 2017.10.25 at 10h 21m 03s.xml">
+      <configuration name="GoToTest.enterSite" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="GoToTest_goTo - 2017.10.24 at 16h 58m 08s.xml">
-      <configuration name="GoToTest.goTo" configurationId="TestNG" />
+    <history-entry file="GoToTest_enterSite - 2017.10.25 at 10h 26m 37s.xml">
+      <configuration name="GoToTest.enterSite" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="GoToTest_goTo - 2017.10.24 at 17h 17m 54s.xml">
-      <configuration name="GoToTest.goTo" configurationId="TestNG" />
+    <history-entry file="GoToTest_enterSite - 2017.10.25 at 10h 30m 55s.xml">
+      <configuration name="GoToTest.enterSite" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="GoToTest_goTo - 2017.10.24 at 17h 18m 12s.xml">
-      <configuration name="GoToTest.goTo" configurationId="TestNG" />
+    <history-entry file="GoToTest_enterSite - 2017.10.25 at 10h 35m 43s.xml">
+      <configuration name="GoToTest.enterSite" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GoToTest_enterSite - 2017.10.25 at 10h 39m 47s.xml">
+      <configuration name="GoToTest.enterSite" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GoToTest_enterSite - 2017.10.25 at 10h 43m 14s.xml">
+      <configuration name="GoToTest.enterSite" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="GoToTest_enterSite - 2017.10.25 at 10h 46m 32s.xml">
+      <configuration name="GoToTest.enterSite" configurationId="TestNG" />
     </history-entry>
     <history-entry file="GoToTest_goTo - 2017.10.24 at 17h 21m 12s.xml">
       <configuration name="GoToTest.goTo" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="GoToTest_goTo_(1) - 2017.10.24 at 16h 58m 30s.xml">
-      <configuration name="GoToTest.goTo (1)" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="GoToTest_goTo_(1) - 2017.10.24 at 16h 58m 55s.xml">
-      <configuration name="GoToTest.goTo (1)" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="GoToTest_goTo_(1) - 2017.10.24 at 17h 19m 07s.xml">
-      <configuration name="GoToTest.goTo (1)" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -626,7 +629,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added drivers" />
     <MESSAGE value="add library for drivers&#10;drivers were removed from resources" />
-    <option name="LAST_COMMIT_MESSAGE" value="add library for drivers&#10;drivers were removed from resources" />
+    <MESSAGE value="added test for login (currently wrong selectors)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added test for login (currently wrong selectors)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -898,6 +902,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-api/3.6.0/selenium-api-3.6.0.jar!/org/openqa/selenium/WebElement.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="14" column="9" lean-forward="false" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/core/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -905,14 +925,6 @@
           <folding>
             <element signature="e#164#165#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/Driver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -934,8 +946,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/core/Locators.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        <state relative-caret-position="190">
+          <caret line="35" column="56" lean-forward="false" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -944,8 +956,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pages/PikabuHomePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="18" lean-forward="false" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+        <state relative-caret-position="207">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -954,8 +966,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/GoToTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="221">
+          <caret line="13" column="36" lean-forward="false" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -964,8 +976,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/locators.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="51" lean-forward="true" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+        <state relative-caret-position="51">
+          <caret line="3" column="69" lean-forward="true" selection-start-line="3" selection-start-column="69" selection-end-line="3" selection-end-column="69" />
           <folding />
         </state>
       </provider>
