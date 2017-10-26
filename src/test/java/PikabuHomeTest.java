@@ -1,11 +1,10 @@
-import controls.BaseControl;
 import core.Driver;
 import core.PropertiesContainer;
 import core.TestBase;
 import org.testng.annotations.Test;
 import pages.PikabuHomePage;
 
-public class PikabuHomeTest extends TestBase{
+public class PikabuHomeTest extends TestBase {
     @Test
     public static void goTo() {
         Driver.get().get(PropertiesContainer.get("test.baseUrl"));

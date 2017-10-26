@@ -13,7 +13,7 @@ public abstract class BaseControl {
     protected WebElement element;
     protected By by;
 
-    public void click () {
+    public void click() {
         element.click();
     }
 
@@ -25,7 +25,7 @@ public abstract class BaseControl {
         });
     }
 
-    public void waitForElementVisible () {
+    public void waitForElementVisible() {
 
     }
 
@@ -33,7 +33,7 @@ public abstract class BaseControl {
 
     }
 
-    public void isElementClickable () {
+    public void isElementClickable() {
 
     }
 
@@ -41,6 +41,6 @@ public abstract class BaseControl {
 
     }
 
-    public void isElementNotPresent () {
-}
+    public void isElementNotPresent() {
+    }
 }

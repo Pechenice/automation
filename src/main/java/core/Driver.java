@@ -23,7 +23,7 @@ public class Driver {
 
     protected static void init() {
         if (Driver.driver == null) {
-            switch (PropertiesContainer.get("test.browser"))  {
+            switch (PropertiesContainer.get("test.browser")) {
                 case "chrome":
                     ChromeDriverManager.getInstance().setup();
                     driver = new ChromeDriver();

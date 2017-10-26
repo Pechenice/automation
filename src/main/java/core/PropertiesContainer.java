@@ -22,6 +22,7 @@ public class PropertiesContainer {
         } catch (IOException e) {
             e.printStackTrace();
             Assert.fail(e.getMessage());
-        } return properties;
+        }
+        return properties;
     }
 }
