@@ -39,7 +39,7 @@ public class Driver {
                 default:
                     throw new AssertionError("Unsupported browser " + System.getProperty("test.browser"));
             }
-            driver.manage().timeouts().implicitlyWait(Long.parseLong(PropertiesContainer.get("test.timeouts")), TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Long.parseLong(PropertiesContainer.get("test.timeout")), TimeUnit.SECONDS);
         }
     }
 

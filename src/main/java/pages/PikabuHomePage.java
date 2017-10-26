@@ -10,6 +10,8 @@ public class PikabuHomePage {
     private ButtonControl SIGN_IN_BUTTON = ButtonControl.findButtonByCss("button.b-button.b-button_type_default");
 
     public void login(String login, String password) {
+        SIGN_IN_BUTTON.waitForElement();
+        System.out.println("Igor pis" + "<=====3");
         LOGIN_FIELD.sendKeys(login);
         PASSWORD_FIELD.sendKeys(password);
         SIGN_IN_BUTTON.click();

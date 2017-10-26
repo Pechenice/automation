@@ -39,7 +39,8 @@ public class TextControl extends BaseControl {
     }
     public static TextControl findTextByCss(String css) {
         TextControl tc = new TextControl();
-        tc.element = Driver.get().findElement(By.cssSelector(css));
+        tc.by = By.cssSelector(css);
+        tc.element = Driver.get().findElement(tc.by);
         return tc;
     }
     public static TextControl findTextByXpath(String xpath) {
