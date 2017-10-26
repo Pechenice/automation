@@ -3,18 +3,11 @@ package core;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.testng.Assert;
-import org.testng.Reporter;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Enumeration;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class Driver {
@@ -46,7 +39,7 @@ public class Driver {
                 default:
                     throw new AssertionError("Unsupported browser " + System.getProperty("test.browser"));
             }
-            Driver.driver.manage().timeouts().implicitlyWait(Long.parseLong(System.getProperty("test.timeouts")), TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Long.parseLong(PropertiesContainer.get("test.timeouts")), TimeUnit.SECONDS);
         }
     }
 
