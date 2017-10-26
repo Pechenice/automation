@@ -4,7 +4,6 @@ import org.testng.Assert;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Map;
 import java.util.Properties;
 
 public class PropertiesContainer {
@@ -25,7 +24,4 @@ public class PropertiesContainer {
             Assert.fail(e.getMessage());
         } return properties;
     }
-
-
-
 }
