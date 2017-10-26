@@ -9,13 +9,12 @@ public class GoToTest extends TestBase{
     public static void goTo() {
         Driver.get().get(PropertiesContainer.get("test.baseUrl"));
         System.out.println("Base Url is loaded");
-//        System.out.println(PropertiesContainer.get("test.timeouts"));
     }
 
-//    @Test
-//    public static void enterSite() {
-//        Driver.get().get(PropertiesContainer.get("test.baseUrl"));
-//        PikabuHomePage homePage = new PikabuHomePage();
-//        homePage.login("something", "pass12345");
-//    }
+    @Test
+    public static void enterSite() {
+        Driver.get().get(PropertiesContainer.get("test.baseUrl"));
+        PikabuHomePage homePage = new PikabuHomePage();
+        homePage.login("something", "pass12345");
+    }
 }
