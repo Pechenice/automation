@@ -65,4 +65,5 @@ public class TextControl extends BaseControl {
         clear();
         element.sendKeys(text);
     }
+
 }

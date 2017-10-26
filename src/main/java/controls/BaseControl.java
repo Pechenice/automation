@@ -25,22 +25,22 @@ public abstract class BaseControl {
         });
     }
 
-    public void waitForElementVisible() {
-
+    public Boolean isElementVisible() {
+        if (element.isDisplayed()) {
+            return true;
+        }
+        return false;
     }
 
-    public void waitForElementInvisible() {
-
+    public Boolean isElementClickable() {
+        return element.isEnabled();
     }
 
-    public void isElementClickable() {
-
+    public Boolean isElementPresent() {
+        return Driver.get().findElements(by).size() > 0;
     }
 
-    public void isElementPresent() {
-
-    }
-
-    public void isElementNotPresent() {
+    public Boolean isElementNotPresent() {
+        return Driver.get().findElements(by).size() == 0;
     }
 }
