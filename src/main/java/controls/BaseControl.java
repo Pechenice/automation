@@ -24,28 +24,23 @@ public abstract class BaseControl {
 //                return input.findElements(by).size() == 1;
 //            }
 // });
-//                ExpectedConditions.presenceOfElementLocated(by));
-//        if () {
-//            return true;
-//        } else return false;
-//    }
 
-    public void waitForVisability () {
+    public void waitForElementVisible () {
 
     }
 
-    public void waitForInvisible() {
+    public void waitForElementInvisible() {
 
     }
 
-    public void elementIsClickable () {
+    public void isElementClickable () {
 
     }
 
-    public void elementIsPresent() {
+    public void isElementPresent() {
 
     }
 
-    public void elementIsNotPresent () {
+    public void isElementNotPresent () {
 }
 }
