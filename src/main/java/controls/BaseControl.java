@@ -18,17 +18,17 @@ public abstract class BaseControl {
         element.click();
     }
 
-    public void waitForElement(By by) {
-        new WebDriverWait(Driver.get(), Long.parseLong(PropertiesContainer.get("test.timeout"))).until(new ExpectedCondition<Boolean>() {
-            public Boolean apply (WebDriver input) {
-                return input.findElements(by).size() == 1;
-            }
- });
+//    public void waitForElement(By by) {
+//        new WebDriverWait(Driver.get(), Long.parseLong(PropertiesContainer.get("test.timeout"))).until(new ExpectedCondition<Boolean>() {
+//            public Boolean apply (WebDriver input) {
+//                return input.findElements(by).size() == 1;
+//            }
+// });
 //                ExpectedConditions.presenceOfElementLocated(by));
 //        if () {
 //            return true;
 //        } else return false;
-    }
+//    }
 
     public void waitForVisability () {
 
