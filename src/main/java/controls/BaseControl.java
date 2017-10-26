@@ -17,7 +17,7 @@ public abstract class BaseControl {
         element.click();
     }
 
-    public void waitForElement() {
+    public void waitForElementPresent() {
         new WebDriverWait(Driver.get(), Long.parseLong(PropertiesContainer.get("test.timeout"))).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver input) {
                 return input.findElements(by).size() > 0;
