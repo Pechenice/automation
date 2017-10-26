@@ -8,6 +8,7 @@ public class PikabuHomePage {
     private TextControl LOGIN_FIELD = TextControl.findTextByCss("input#username");
     private TextControl PASSWORD_FIELD = TextControl.findTextByCss("input#password");
     private ButtonControl SIGN_IN_BUTTON = ButtonControl.findButtonByCss("button.b-button.b-button_type_default");
+    private ButtonControl CONTROL_BUTTON = ButtonControl.findButtonByCss("div.b-navigator");
 
     public void login(String login, String password) {
         LOGIN_FIELD.sendKeys(login);

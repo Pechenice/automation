@@ -26,10 +26,7 @@ public abstract class BaseControl {
     }
 
     public Boolean isElementVisible() {
-        if (element.isDisplayed()) {
-            return true;
-        }
-        return false;
+        return element.isDisplayed();
     }
 
     public Boolean isElementClickable() {
