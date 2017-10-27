@@ -5,56 +5,40 @@ import org.openqa.selenium.By;
 
 public class TextControl extends BaseControl {
 
-    private TextControl() {
+    public TextControl(By by) {
+        super(by);
     }
 
     public static TextControl findTextById(String id) {
-        TextControl tc = new TextControl();
-        tc.element = Driver.get().findElement(By.id(id));
-        return tc;
+        return new TextControl(By.id(id));
     }
 
     public static TextControl findTextByName(String name) {
-        TextControl tc = new TextControl();
-        tc.element = Driver.get().findElement(By.name(name));
-        return tc;
+        return new TextControl(By.name(name));
     }
 
     public static TextControl findTextByClassName(String className) {
-        TextControl tc = new TextControl();
-        tc.element = Driver.get().findElement(By.className(className));
-        return tc;
+        return new TextControl(By.className(className));
     }
 
     public static TextControl findTextByTagName(String tagName) {
-        TextControl tc = new TextControl();
-        tc.element = Driver.get().findElement(By.tagName(tagName));
-        return tc;
+        return new TextControl(By.tagName(tagName));
     }
 
     public static TextControl findTextByLinkText(String linkText) {
-        TextControl tc = new TextControl();
-        tc.element = Driver.get().findElement(By.linkText(linkText));
-        return tc;
+        return new TextControl(By.linkText(linkText));
     }
 
     public static TextControl findTextByPartText(String partText) {
-        TextControl tc = new TextControl();
-        tc.element = Driver.get().findElement(By.partialLinkText(partText));
-        return tc;
+        return new TextControl(By.partialLinkText(partText));
     }
 
     public static TextControl findTextByCss(String css) {
-        TextControl tc = new TextControl();
-        tc.by = By.cssSelector(css);
-        tc.element = Driver.get().findElement(tc.by);
-        return tc;
+        return new TextControl(By.cssSelector(css));
     }
 
     public static TextControl findTextByXpath(String xpath) {
-        TextControl tc = new TextControl();
-        tc.element = Driver.get().findElement(By.xpath(xpath));
-        return tc;
+        return new TextControl(By.xpath(xpath));
     }
 
     public void clear() {

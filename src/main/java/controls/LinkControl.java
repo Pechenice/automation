@@ -1,56 +1,43 @@
 package controls;
 
-import core.Driver;
 import org.openqa.selenium.By;
 
 public class LinkControl extends BaseControl {
 
+    public LinkControl(By by) {
+        super(by);
+    }
+
     public static LinkControl findLinkById(String id) {
-        LinkControl lc = new LinkControl();
-        lc.element = Driver.get().findElement(By.id(id));
-        return lc;
+        return new LinkControl(By.id(id));
     }
 
     public static LinkControl findLinkByName(String name) {
-        LinkControl lc = new LinkControl();
-        lc.element = Driver.get().findElement(By.name(name));
-        return lc;
+        return new LinkControl(By.name(name));
     }
 
     public static LinkControl findLinkByClassName(String className) {
-        LinkControl lc = new LinkControl();
-        lc.element = Driver.get().findElement(By.className(className));
-        return lc;
+        return new LinkControl(By.className(className));
     }
 
     public static LinkControl findLinkByTagName(String tagName) {
-        LinkControl lc = new LinkControl();
-        lc.element = Driver.get().findElement(By.tagName(tagName));
-        return lc;
+        return new LinkControl(By.tagName(tagName));
     }
 
     public static LinkControl findLinkByLinkText(String linkText) {
-        LinkControl lc = new LinkControl();
-        lc.element = Driver.get().findElement(By.linkText(linkText));
-        return lc;
+        return new LinkControl(By.linkText(linkText));
     }
 
     public static LinkControl findLinkByPartText(String partText) {
-        LinkControl lc = new LinkControl();
-        lc.element = Driver.get().findElement(By.partialLinkText(partText));
-        return lc;
+        return new LinkControl(By.partialLinkText(partText));
     }
 
     public static LinkControl findLinkByCss(String css) {
-        LinkControl lc = new LinkControl();
-        lc.element = Driver.get().findElement(By.cssSelector(css));
-        return lc;
+        return new LinkControl(By.cssSelector(css));
     }
 
     public static LinkControl findLinkByXpath(String xpath) {
-        LinkControl lc = new LinkControl();
-        lc.element = Driver.get().findElement(By.xpath(xpath));
-        return lc;
+        return new LinkControl(By.xpath(xpath));
     }
 
 }

@@ -5,51 +5,39 @@ import org.openqa.selenium.By;
 
 public class ButtonControl extends BaseControl {
 
+    public ButtonControl(By by) {
+        super(by);
+    }
+
     public static ButtonControl findButtonById(String id) {
-        ButtonControl bc = new ButtonControl();
-        bc.element = Driver.get().findElement(By.id(id));
-        return bc;
+        return new ButtonControl(By.id(id));
     }
 
     public static ButtonControl findButtonByName(String name) {
-        ButtonControl bc = new ButtonControl();
-        bc.element = Driver.get().findElement(By.name(name));
-        return bc;
+        return new ButtonControl(By.name(name));
     }
 
     public static ButtonControl findButtonByClassName(String className) {
-        ButtonControl bc = new ButtonControl();
-        bc.element = Driver.get().findElement(By.className(className));
-        return bc;
+        return new ButtonControl(By.className(className));
     }
 
     public static ButtonControl findButtonByTagName(String tagName) {
-        ButtonControl bc = new ButtonControl();
-        bc.element = Driver.get().findElement(By.tagName(tagName));
-        return bc;
+        return new ButtonControl(By.tagName(tagName));
     }
 
     public static ButtonControl findButtonByLinkText(String linkText) {
-        ButtonControl bc = new ButtonControl();
-        bc.element = Driver.get().findElement(By.linkText(linkText));
-        return bc;
+        return new ButtonControl(By.linkText(linkText));
     }
 
     public static ButtonControl findButtonByPartText(String partText) {
-        ButtonControl bc = new ButtonControl();
-        bc.element = Driver.get().findElement(By.partialLinkText(partText));
-        return bc;
+        return new ButtonControl(By.partialLinkText(partText));
     }
 
     public static ButtonControl findButtonByCss(String css) {
-        ButtonControl bc = new ButtonControl();
-        bc.element = Driver.get().findElement(By.cssSelector(css));
-        return bc;
+        return new ButtonControl(By.cssSelector(css));
     }
 
     public static ButtonControl findButtonByXpath(String xpath) {
-        ButtonControl bc = new ButtonControl();
-        bc.element = Driver.get().findElement(By.xpath(xpath));
-        return bc;
+        return new ButtonControl(By.xpath(xpath));
     }
 }

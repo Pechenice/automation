@@ -13,6 +13,11 @@ public abstract class BaseControl {
     protected WebElement element;
     protected By by;
 
+    public BaseControl(By byInput) {
+        by = byInput;
+        element = Driver.get().findElement(by);
+    }
+
     public void click() {
         element.click();
     }
