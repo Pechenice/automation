@@ -1,6 +1,5 @@
 package controls;
 
-import core.Driver;
 import org.openqa.selenium.By;
 
 public class TextControl extends BaseControl {

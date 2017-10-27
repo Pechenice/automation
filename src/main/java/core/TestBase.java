@@ -8,6 +8,7 @@ public class TestBase {
     @BeforeTest
     public void setUp() {
         Driver.init();
+        Driver.get().get(PropertiesContainer.get("test.baseUrl"));
     }
 
     @AfterTest
