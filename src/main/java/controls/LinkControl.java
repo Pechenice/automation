@@ -1,11 +1,16 @@
 package controls;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class LinkControl extends BaseControl {
 
     public LinkControl(By by) {
         super(by);
+    }
+
+    public LinkControl(WebElement element, By by) {
+        super(element, by);
     }
 
     public static LinkControl findLinkById(String id) {
@@ -38,6 +43,14 @@ public class LinkControl extends BaseControl {
 
     public static LinkControl findLinkByXpath(String xpath) {
         return new LinkControl(By.xpath(xpath));
+    }
+
+    public static LinkControl findLinkByXpath(WebElement element, String xpath) {
+        return new LinkControl(element, By.xpath(xpath));
+    }
+
+    public String getUrl () {
+        return element.getAttribute("href");
     }
 
 }

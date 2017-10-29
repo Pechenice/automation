@@ -1,11 +1,16 @@
 package controls;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class ButtonControl extends BaseControl {
 
     public ButtonControl(By by) {
         super(by);
+    }
+
+    public ButtonControl(WebElement element, By by) {
+        super(element, by);
     }
 
     public static ButtonControl findButtonById(String id) {
@@ -19,6 +24,11 @@ public class ButtonControl extends BaseControl {
     public static ButtonControl findButtonByClassName(String className) {
         return new ButtonControl(By.className(className));
     }
+
+    public static ButtonControl findButtonByXpath(WebElement element, String className) {
+        return new ButtonControl(element, By.xpath(className));
+    }
+
 
     public static ButtonControl findButtonByTagName(String tagName) {
         return new ButtonControl(By.tagName(tagName));

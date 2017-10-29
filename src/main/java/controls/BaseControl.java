@@ -18,6 +18,11 @@ public abstract class BaseControl {
         element = Driver.get().findElement(by);
     }
 
+    public BaseControl(WebElement elementInput, By byInput) {
+        element = elementInput.findElement(byInput);
+        by = byInput;
+    }
+
     public void click() {
         element.click();
     }
