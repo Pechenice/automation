@@ -30,6 +30,13 @@ public abstract class BaseControl {
         });
     }
 
+    public BaseControl waitForElementVisible() {
+        new WebDriverWait(Driver.get(), Integer.parseInt(PropertiesContainer.get("test.timeout"))).until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver input) {return input.findElement(by).isDisplayed(); }
+        });
+        return this;
+    }
+
     public Boolean isElementVisible() {
         return element.isDisplayed();
     }
