@@ -10,7 +10,7 @@ public class LinkControl extends BaseControl {
     }
 
     public LinkControl(WebElement element, By by) {
-        super(element, by);
+                super(element, by);
     }
 
     public static LinkControl findLinkById(String id) {

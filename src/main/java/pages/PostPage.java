@@ -5,7 +5,7 @@ import controls.LinkControl;
 
 import org.openqa.selenium.WebElement;
 
-public class PostPage {
+public class PostPage extends BasePage {
 
     private ButtonControl BUTTON_UP;
     private LinkControl LINK_FOR_POST;
