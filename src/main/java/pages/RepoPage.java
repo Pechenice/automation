@@ -15,4 +15,15 @@ public class RepoPage {
         descriptionField = TextControl.findTextByCss("#repository_description");
         submitButton = ButtonControl.findButtonByCss("button[type='submit'][class^='btn']");
     }
+
+    public RepoPage createRepo(String repoNameInput) {
+        return createRepo(repoNameInput, null);
+    }
+
+    public RepoPage createRepo(String repoNameInput, String description) {
+        repoName.sendKeys(repoNameInput);
+        descriptionField.sendKeys(description);
+        submitButton.click();
+        return new RepoPage();
+    }
 }
