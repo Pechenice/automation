@@ -12,10 +12,10 @@ public class LoginPage {
     private LinkControl createNewAccount;
 
     public LoginPage () {
-        loginField = TextControl.findTextById("login_field");
-        passwordField = TextControl.findTextById("password");
-        signInButton = ButtonControl.findButtonByName("commit");
-        forgotPasswordButton = ButtonControl.findButtonByClassName("label-link");
+        loginField = TextControl.findTextByCss("#login_field");
+        passwordField = TextControl.findTextByCss("#password");
+        signInButton = ButtonControl.findButtonByCss("input[name='commit']");
+        forgotPasswordButton = ButtonControl.findButtonByCss(".label-link");
         createNewAccount = LinkControl.findLinkByCss("a[href='/join?source=login']");
     }
 

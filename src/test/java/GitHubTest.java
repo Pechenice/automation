@@ -3,6 +3,7 @@ import core.PropertiesContainer;
 import core.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.RepoPage;
 import pages.StartPage;
 
 public class GitHubTest extends TestBase{
@@ -16,6 +17,8 @@ public class GitHubTest extends TestBase{
 
     @Test
     public void giveAccessToRepo() {
-
+        StartPage startPage = new StartPage();
+        startPage = startPage.goToLoginPage().logIn(PropertiesContainer.get("test.login"), PropertiesContainer.get("test.password"));
+        RepoPage repoPage = startPage.goToRepoCreation();
     }
 }
