@@ -57,4 +57,5 @@ public abstract class BaseControl {
     public Boolean isElementNotPresent() {
         return Driver.get().findElements(by).size() == 0;
     }
+
 }
