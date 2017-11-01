@@ -58,4 +58,6 @@ public abstract class BaseControl {
         return Driver.get().findElements(by).size() == 0;
     }
 
+    public String getText() {return element.getText();}
+
 }

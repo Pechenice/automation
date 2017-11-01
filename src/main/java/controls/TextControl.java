@@ -40,9 +40,6 @@ public class TextControl extends BaseControl {
         return new TextControl(By.xpath(xpath));
     }
 
-    public String getText() {
-        return element.getText();
-    }
 
     public void clear() {
         element.clear();
