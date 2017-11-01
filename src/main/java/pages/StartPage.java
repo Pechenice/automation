@@ -28,9 +28,9 @@ public class StartPage {
         return new LoginPage();
     }
 
-    public RepoPage goToRepoCreation() {
+    public RepoCreationPage goToRepoCreation() {
         createRepo.click();
-        return new RepoPage();
+        return new RepoCreationPage();
     }
 
     public String getTitleText() {

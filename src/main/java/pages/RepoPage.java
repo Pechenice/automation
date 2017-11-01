@@ -2,28 +2,24 @@ package pages;
 
 import controls.ButtonControl;
 import controls.TextControl;
+import core.PropertiesContainer;
 
 public class RepoPage {
-    private ButtonControl owner;
-    private TextControl repoName;
-    private TextControl descriptionField;
-    private ButtonControl submitButton;
+    private TextControl title;
+    private ButtonControl settings;
 
     public RepoPage() {
-        owner = ButtonControl.findButtonByCss("div[class^='select-menu']>button[class^='btn'] div[class$='gravatar']");
-        repoName = TextControl.findTextByCss("#repository_name");
-        descriptionField = TextControl.findTextByCss("#repository_description");
-        submitButton = ButtonControl.findButtonByCss("button[type='submit'][class^='btn']");
+        title = TextControl.findTextByCss("h3>strong");
+        settings = ButtonControl.findButtonByCss("a[href='/"+ PropertiesContainer.get("test.login")+"/"+PropertiesContainer.get("test.repositoryName")+"/settings']");
     }
 
-    public RepoPage createRepo(String repoNameInput) {
-        return createRepo(repoNameInput, null);
+    public String getTitle() {
+        return title.getText();
     }
 
-    public RepoPage createRepo(String repoNameInput, String description) {
-        repoName.sendKeys(repoNameInput);
-        descriptionField.sendKeys(description);
-        submitButton.click();
-        return new RepoPage();
+    public SettingsPage goToSettings() {
+        settings.click();
+        return new SettingsPage();
     }
+
 }
