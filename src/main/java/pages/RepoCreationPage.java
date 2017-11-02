@@ -4,7 +4,7 @@ import controls.ButtonControl;
 import controls.LinkControl;
 import controls.TextControl;
 
-public class RepoCreationPage {
+public class RepoCreationPage extends BasePage {
     private ButtonControl owner;
     private TextControl repoName;
     private TextControl descriptionField;

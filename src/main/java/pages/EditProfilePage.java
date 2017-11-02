@@ -5,7 +5,7 @@ import controls.LinkControl;
 import controls.TextControl;
 import core.PropertiesContainer;
 
-public class EditProfilePage {
+public class EditProfilePage extends BasePage {
     private TextControl name;
     private TextControl bio;
     private TextControl company;
@@ -22,8 +22,11 @@ public class EditProfilePage {
     }
 
     public EditProfilePage upDateProfile() {
+        name.clear();
         name.sendKeys(PropertiesContainer.get("test.profileName"));
+        bio.clear();
         bio.sendKeys(PropertiesContainer.get("test.profileBio"));
+        company.clear();
         company.sendKeys(PropertiesContainer.get("test.profileCompany"));
         updateProfile.click();
         return new EditProfilePage();
@@ -40,7 +43,7 @@ public class EditProfilePage {
     public ProfilePage goToProfileAfterUpdate() {
         goToProfileAfterUpdate = LinkControl.findLinkByCss("button+a[href='/glaaadis']");
         goToProfileAfterUpdate.click();
-        return new ProfilePage();
+        return new ProfilePage(true);
     }
 
 }
