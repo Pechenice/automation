@@ -49,4 +49,6 @@ public class ButtonControl extends BaseControl {
     public static ButtonControl findButtonByXpath(String xpath) {
         return new ButtonControl(By.xpath(xpath));
     }
+
+    public void sendKeys(String keys) { element.sendKeys(keys);}
 }

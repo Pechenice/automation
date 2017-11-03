@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +36,11 @@ public class GitHubTest extends TestBase{
     @Test
     public void updateProfile() {
         StartLoggedPage startPage = logIn();
-        EditProfilePage editProfilePage = startPage.goToProfilePage().goToEmptyEditProfilePage();
-        ProfilePage profilePage = editProfilePage.upDateProfile().goToProfileAfterUpdate();
+        EditProfilePage editProfilePage = startPage.goToProfilePage().goToEditProfilePage();
+        ProfilePage profilePage = editProfilePage.upDateAvatar(new File("src/main/resources/angryUnicorn.jpg").getAbsolutePath()).upDateProfile(
+                PropertiesContainer.get("test.profileName"),
+                PropertiesContainer.get("test.profileBio"),
+                PropertiesContainer.get("test.profileCompany")).goToProfileAfterUpdate();
         List<BaseControl> listOfProfileInformation = profilePage.getProfileInformation();
         List<String> itemsText = new ArrayList<>();
         for(BaseControl info: listOfProfileInformation) {
@@ -62,11 +66,10 @@ public class GitHubTest extends TestBase{
     private void deleteProfileInfo(ProfilePage profilePage) {
         profilePage.goToEditProfilePage().deleteAllInfoFromProfile();
     }
-
 }
 
-// ProfilePage - not all of button are present always. May be make some check, that buttons are visible
-// Somehow I need to compare text from items in list with those one, in properties. Problem - idk what item is inside
+//updateProfile - проблема с тем, что мы 30 секунд ожидаем
 
 //RepoPage - переинициализирует title (29 of code)
-//научить ходить по двум сценариям в зависимости от того, заполнен профиль или нет
+//EditProfilePage - upDateProfile - поддержка нескольких вариаций данных
+//валидатор картинки

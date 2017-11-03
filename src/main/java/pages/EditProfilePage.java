@@ -3,7 +3,6 @@ package pages;
 import controls.ButtonControl;
 import controls.LinkControl;
 import controls.TextControl;
-import core.PropertiesContainer;
 
 public class EditProfilePage extends BasePage {
     private TextControl name;
@@ -21,14 +20,20 @@ public class EditProfilePage extends BasePage {
         updateProfile = ButtonControl.findButtonByCss("button[type='submit'][class$='btn-primary']");
     }
 
-    public EditProfilePage upDateProfile() {
-        name.clear();
-        name.sendKeys(PropertiesContainer.get("test.profileName"));
-        bio.clear();
-        bio.sendKeys(PropertiesContainer.get("test.profileBio"));
-        company.clear();
-        company.sendKeys(PropertiesContainer.get("test.profileCompany"));
+    public EditProfilePage upDateProfile(String name, String bio, String company) {
+        this.name.clear();
+        this.name.sendKeys(name);
+        this.bio.clear();
+        this.bio.sendKeys(bio);
+        this.company.clear();
+        this.company.sendKeys(company);
         updateProfile.click();
+        return new EditProfilePage();
+    }
+
+    public EditProfilePage upDateAvatar(String pass) {
+        uploadProfilePicture.sendKeys(pass);
+        ButtonControl.findButtonByCss("button[type='submit'][value='save']").click();
         return new EditProfilePage();
     }
 
@@ -43,7 +48,7 @@ public class EditProfilePage extends BasePage {
     public ProfilePage goToProfileAfterUpdate() {
         goToProfileAfterUpdate = LinkControl.findLinkByCss("button+a[href='/glaaadis']");
         goToProfileAfterUpdate.click();
-        return new ProfilePage(true);
+        return new ProfilePage();
     }
 
 }

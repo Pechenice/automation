@@ -6,7 +6,7 @@ import core.PropertiesContainer;
 public class StartLoggedPage extends BasePage {
     private ButtonControl createRepo;
     private ButtonControl profile;
-    private ButtonControl editingProfileWithoutInfo;
+    private ButtonControl editingProfile;
 
     public StartLoggedPage() {
         createRepo = ButtonControl.findButtonByCss("a[href='/new'][class^='btn'][data-ga-click^='Hello World']");
@@ -20,8 +20,8 @@ public class StartLoggedPage extends BasePage {
 
     public ProfilePage goToProfilePage() {
         profile.click();
-        editingProfileWithoutInfo = ButtonControl.findButtonByCss("a[href='/" +PropertiesContainer.get("test.login")+ "']");
-        editingProfileWithoutInfo.click();
+        editingProfile = ButtonControl.findButtonByCss("a[href='/" +PropertiesContainer.get("test.login")+ "']");
+        editingProfile.click();
         return new ProfilePage();
     }
 }
