@@ -49,8 +49,8 @@ public class LinkControl extends BaseControl {
         return new LinkControl(element, By.xpath(xpath));
     }
 
-    public String getUrl () {
-        return element.getAttribute("href");
+    public String getAttribute (String attribute) {
+        return element.getAttribute(attribute);
     }
 
 }

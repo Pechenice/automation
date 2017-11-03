@@ -37,7 +37,8 @@ public class GitHubTest extends TestBase{
     public void updateProfile() {
         StartLoggedPage startPage = logIn();
         EditProfilePage editProfilePage = startPage.goToProfilePage().goToEditProfilePage();
-        ProfilePage profilePage = editProfilePage.upDateAvatar(new File("src/main/resources/angryUnicorn.jpg").getAbsolutePath()).upDateProfile(
+        ProfilePage profilePage = editProfilePage.upDateAvatar(new File("src/main/resources/angryUnicorn.jpg").getAbsolutePath())
+                .upDateProfile(
                 PropertiesContainer.get("test.profileName"),
                 PropertiesContainer.get("test.profileBio"),
                 PropertiesContainer.get("test.profileCompany")).goToProfileAfterUpdate();
@@ -67,8 +68,6 @@ public class GitHubTest extends TestBase{
         profilePage.goToEditProfilePage().deleteAllInfoFromProfile();
     }
 }
-
-//updateProfile - проблема с тем, что мы 30 секунд ожидаем
 
 //RepoPage - переинициализирует title (29 of code)
 //EditProfilePage - upDateProfile - поддержка нескольких вариаций данных
