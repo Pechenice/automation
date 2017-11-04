@@ -37,8 +37,10 @@ public class GitHubTest extends TestBase{
     public void updateProfile() {
         StartLoggedPage startPage = logIn();
         EditProfilePage editProfilePage = startPage.goToProfilePage().goToEditProfilePage();
-        ProfilePage profilePage = editProfilePage.upDateAvatar(new File("src/main/resources/angryUnicorn.jpg").getAbsolutePath())
-                .upDateProfile(
+        String pictureBeforeUpdate = editProfilePage.getImageChecker().getAttribute("src");
+        editProfilePage = editProfilePage.upDateAvatar(new File("src/main/resources/unicorn.jpg").getAbsolutePath());
+        String pictureAfterUpdate = editProfilePage.getImageChecker().getAttribute("src");
+        ProfilePage profilePage = editProfilePage.upDateProfile(
                 PropertiesContainer.get("test.profileName"),
                 PropertiesContainer.get("test.profileBio"),
                 PropertiesContainer.get("test.profileCompany")).goToProfileAfterUpdate();
@@ -53,6 +55,7 @@ public class GitHubTest extends TestBase{
         propertiesTexts.add(PropertiesContainer.get("test.profileCompany"));
 
         Assert.assertTrue(itemsText.containsAll(propertiesTexts));
+        Assert.assertTrue(!pictureAfterUpdate.equals(pictureBeforeUpdate));
 
         deleteProfileInfo(profilePage);
         }
@@ -65,10 +68,9 @@ public class GitHubTest extends TestBase{
     }
 
     private void deleteProfileInfo(ProfilePage profilePage) {
-        profilePage.goToEditProfilePage().deleteAllInfoFromProfile();
+        profilePage.goToEditProfilePage().upDateAvatar(new File("src/main/resources/no_unicorn.png").getAbsolutePath()).deleteAllInfoFromProfile();
     }
 }
 
 //RepoPage - переинициализирует title (29 of code)
 //EditProfilePage - upDateProfile - поддержка нескольких вариаций данных
-//валидатор картинки

@@ -42,6 +42,9 @@ public class EditProfilePage extends BasePage {
     }
 
     public EditProfilePage deleteAllInfoFromProfile() {
+//        upDateAvatar(pathForImage);
+//        uploadProfilePicture.sendKeys(pathForImage);
+//        ButtonControl.findButtonByCss("button[type='submit'][value='save']").click();
         name.clear();
         bio.clear();
         company.clear();
