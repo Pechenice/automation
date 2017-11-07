@@ -1,6 +1,7 @@
 package controls;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 public class TextControl extends BaseControl {
 
@@ -48,5 +49,9 @@ public class TextControl extends BaseControl {
     public void sendKeys(String text) {
         clear();
         element.sendKeys(text);
+    }
+
+    public void pressEnter() {
+        element.sendKeys(Keys.ENTER);
     }
 }

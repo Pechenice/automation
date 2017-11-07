@@ -4,10 +4,13 @@ import core.Driver;
 import core.PropertiesContainer;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public abstract class BaseControl {
     protected WebElement element;
@@ -59,5 +62,10 @@ public abstract class BaseControl {
     }
 
     public String getText() {return element.getText();}
+
+    public void moveAndClickElement() {
+        Actions actions = new Actions(Driver.get());
+        actions.moveToElement(element).click().build().perform();
+    }
 
 }

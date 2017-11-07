@@ -8,8 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-import java.util.concurrent.TimeUnit;
-
 public class Driver {
     private static WebDriver driver = null;
 
