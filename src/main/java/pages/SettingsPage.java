@@ -1,26 +1,20 @@
 package pages;
 
-import controls.ButtonControl;
-import controls.TextControl;
+import controls.Button;
+import controls.Text;
 
 public class SettingsPage extends BasePage {
-    private ButtonControl deleteRepoButton;
-    private TextControl repoNameForConfirmationPopup;
-    private ButtonControl deleteFromConfirmationPopup;
+    private Button button_DeleteRepo() {return Button.byCss("button[data-facebox='#delete_repo_confirm']");}
+    private Text text_RepoNameForConfirmationPopup() {return Text.byCss(".facebox-popup input[type='text']");}
+    private Button button_DeleteFromConfirmationPopup() {return Button.byCss(".facebox-popup button[type='submit']");}
 
-    public SettingsPage() {
-        deleteRepoButton = ButtonControl.findButtonByCss("button[data-facebox='#delete_repo_confirm']");
-    }
-
-    public ButtonControl deleteRepoButton() {
-        return deleteRepoButton;
+    public Button deleteRepoButton() {
+        return button_DeleteRepo();
     }
 
     public StartLoggedPage deleteRepo(String repoName) {
-        repoNameForConfirmationPopup = TextControl.findTextByCss(".facebox-popup input[type='text']");
-        deleteFromConfirmationPopup = ButtonControl.findButtonByCss(".facebox-popup button[type='submit']");
-        repoNameForConfirmationPopup.sendKeys(repoName);
-        deleteFromConfirmationPopup.click();
+        text_RepoNameForConfirmationPopup().sendKeys(repoName);
+        button_DeleteFromConfirmationPopup().click();
         return new StartLoggedPage();
     }
 }

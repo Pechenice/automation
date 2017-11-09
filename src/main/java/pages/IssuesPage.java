@@ -1,9 +1,8 @@
 package pages;
 
-import controls.ButtonControl;
-import controls.LinkControl;
+import controls.Button;
 import core.Driver;
-import core.PropertiesContainer;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -12,6 +11,10 @@ import java.util.List;
 
 public class IssuesPage extends BasePage {
     private WebElement searchResult;
+    private Button button_NewIssue() {
+        return Button.byCss(".subnav a[href='/glaaadis/Gladiko/issues/new']");
+//        return ButtonControl.findButtonByCss("a[href='/"+ PropertiesContainer.get("test.login")+"/"+PropertiesContainer.get("test.repositoryName")+"/issues/new']");
+    }
 
     public WebElement getSearchResult() {
         return searchResult;
@@ -23,13 +26,10 @@ public class IssuesPage extends BasePage {
     public IssuesPage(WebElement element) {
         searchResult = element;
     }
-    public ButtonControl getNewIssue() {
-        return ButtonControl.findButtonByCss(".subnav a[href='/glaaadis/Gladiko/issues/new']");
-//        return ButtonControl.findButtonByCss("a[href='/"+ PropertiesContainer.get("test.login")+"/"+PropertiesContainer.get("test.repositoryName")+"/issues/new']");
-    }
+
 
     public IssueCreationPage goToIssueCreation() {
-        getNewIssue().click();
+        button_NewIssue().click();
         return new IssueCreationPage();
     }
 

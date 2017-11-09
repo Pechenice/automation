@@ -1,5 +1,5 @@
 
-import controls.BaseControl;
+import controls.Base;
 import core.Driver;
 import core.PropertiesContainer;
 import core.TestBase;
@@ -45,9 +45,9 @@ public class GitHubTest extends TestBase{
                 PropertiesContainer.get("test.profileName"),
                 PropertiesContainer.get("test.profileBio"),
                 PropertiesContainer.get("test.profileCompany")).goToProfileAfterUpdate();
-        List<BaseControl> listOfProfileInformation = profilePage.getProfileInformation();
+        List<Base> listOfProfileInformation = profilePage.getProfileInformation();
         List<String> itemsText = new ArrayList<>();
-        for(BaseControl info: listOfProfileInformation) {
+        for(Base info: listOfProfileInformation) {
             itemsText.add(info.getText());
         }
         List<String> propertiesTexts = new ArrayList<>();

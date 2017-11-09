@@ -1,35 +1,27 @@
 package pages;
 
-import controls.ButtonControl;
-import controls.LinkControl;
-import controls.TextControl;
+import controls.Button;
+import controls.Link;
+import controls.Text;
 
 public class RepoCreationPage extends BasePage {
-    private ButtonControl owner;
-    private TextControl repoName;
-    private TextControl descriptionField;
-    private ButtonControl submitButton;
-    private LinkControl validationOfRepoName;
-
-    public RepoCreationPage() {
-        owner = ButtonControl.findButtonByCss("div[class^='select-menu']>button[class^='btn'] div[class$='gravatar']");
-        repoName = TextControl.findTextByCss("#repository_name");
-        descriptionField = TextControl.findTextByCss("#repository_description");
-        submitButton = ButtonControl.findButtonByCss("button[type='submit'][class^='btn']");
-    }
+    private Button button_Owner() {return Button.byCss("div[class^='select-menu']>button[class^='btn'] div[class$='gravatar']");}
+    private Text text_RepoName() {return Text.byCss("#repository_name");}
+    private Text text_DescriptionField() {return Text.byCss("#repository_description");}
+    private Button button_Submit() {return Button.byCss("button[type='submit'][class^='btn']");}
+    private Link link_ValidationOfRepoName() {return Link.byCss("dl[class$='successed']");}
 
     public RepoPage createRepo(String repoNameInput) {
         return createRepo(repoNameInput, null);
     }
 
     public RepoPage createRepo(String repoNameInput, String description) {
-        repoName.sendKeys(repoNameInput);
+        text_RepoName().sendKeys(repoNameInput);
         if (!(description ==null)) {
-            descriptionField.sendKeys(description);
+            text_DescriptionField().sendKeys(description);
         }
-        validationOfRepoName = LinkControl.findLinkByCss("dl[class$='successed']");
-        validationOfRepoName.waitForElementPresent();
-        submitButton.click();
+        link_ValidationOfRepoName().waitForElementPresent();
+        button_Submit().click();
         return new RepoPage();
     }
 

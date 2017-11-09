@@ -1,64 +1,50 @@
 package pages;
 
-import controls.ButtonControl;
-import controls.LinkControl;
-import controls.TextControl;
+import controls.Button;
+import controls.Link;
+import controls.Text;
 import core.PropertiesContainer;
 
 public class EditProfilePage extends BasePage {
-    private TextControl name;
-    private TextControl bio;
-    private TextControl company;
-    private ButtonControl uploadProfilePicture;
-    private ButtonControl updateProfile;
-    private LinkControl goToProfileAfterUpdate;
-    private LinkControl imageChecker;
-
-    public EditProfilePage() {
-        name = TextControl.findTextByCss("#user_profile_name");
-        bio = TextControl.findTextByCss("#user_profile_bio");
-        company = TextControl.findTextByCss("#user_profile_company");
-        uploadProfilePicture = ButtonControl.findButtonByCss("#upload-profile-picture");
-        updateProfile = ButtonControl.findButtonByCss("button[type='submit'][class$='btn-primary']");
-        imageChecker = LinkControl.findLinkByCss("img[class$='rounded-2']");
-    }
+    private Text text_Name() {return Text.byCss("#user_profile_name");}
+    private Text text_Bio() {return Text.byCss("#user_profile_bio");}
+    private Text text_Company() {return Text.byCss("#user_profile_company");}
+    private Button button_uploadProfilePicture() {return Button.byCss("#upload-profile-picture");}
+    private Button button_UpdateProfile(){return Button.byCss("button[type='submit'][class$='btn-primary']");}
+    private Link link_ImageChecker() {return Link.byCss("img[class$='rounded-2']");}
+    private Link link_GoToProfileAfterUpdate(){return Link.byCss("button+a[href='/"+ PropertiesContainer.get("test.login")+"']");}
 
     public EditProfilePage upDateProfile(String name, String bio, String company) {
-        this.name.clear();
-        this.name.sendKeys(name);
-        this.bio.clear();
-        this.bio.sendKeys(bio);
-        this.company.clear();
-        this.company.sendKeys(company);
-        updateProfile.click();
+        this.text_Name().clear();
+        this.text_Name().sendKeys(name);
+        this.text_Bio().clear();
+        this.text_Bio().sendKeys(bio);
+        this.text_Company().clear();
+        this.text_Company().sendKeys(company);
+        button_UpdateProfile().click();
         return new EditProfilePage();
     }
 
     public EditProfilePage upDateAvatar(String pass) {
-//        imageChecker = LinkControl.findLinkByCss("img[class$='rounded-2']");
-        uploadProfilePicture.sendKeys(pass);
-        ButtonControl.findButtonByCss("button[type='submit'][value='save']").click();
+        button_uploadProfilePicture().sendKeys(pass);
+        Button.byCss("button[type='submit'][value='save']").click();
         return new EditProfilePage();
     }
 
     public EditProfilePage deleteAllInfoFromProfile() {
-//        upDateAvatar(pathForImage);
-//        uploadProfilePicture.sendKeys(pathForImage);
-//        ButtonControl.findButtonByCss("button[type='submit'][value='save']").click();
-        name.clear();
-        bio.clear();
-        company.clear();
-        updateProfile.click();
+        text_Name().clear();
+        text_Bio().clear();
+        text_Company().clear();
+        button_UpdateProfile().click();
         return new EditProfilePage();
     }
 
     public ProfilePage goToProfileAfterUpdate() {
-        goToProfileAfterUpdate = LinkControl.findLinkByCss("button+a[href='/"+ PropertiesContainer.get("test.login")+"']");
-        goToProfileAfterUpdate.click();
+        link_GoToProfileAfterUpdate().click();
         return new ProfilePage();
     }
 
-    public LinkControl getImageChecker() {
-        return imageChecker;
+    public Link getImageChecker() {
+        return link_ImageChecker();
     }
 }

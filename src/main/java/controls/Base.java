@@ -4,7 +4,6 @@ import core.Driver;
 import core.PropertiesContainer;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -12,16 +11,16 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public abstract class BaseControl {
+public abstract class Base {
     protected WebElement element;
     protected By by;
 
-    public BaseControl(By byInput) {
+    public Base(By byInput) {
         by = byInput;
         element = Driver.get().findElement(by);
     }
 
-    public BaseControl(WebElement elementInput, By byInput) {
+    public Base(WebElement elementInput, By byInput) {
         element = elementInput.findElement(byInput);
         by = byInput;
     }
@@ -38,7 +37,7 @@ public abstract class BaseControl {
         });
     }
 
-    public BaseControl waitForElementVisible() {
+    public Base waitForElementVisible() {
         new WebDriverWait(Driver.get(), Integer.parseInt(PropertiesContainer.get("test.timeout"))).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver input) {return input.findElement(by).isDisplayed(); }
         });

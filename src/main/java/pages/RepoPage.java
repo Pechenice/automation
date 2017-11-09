@@ -1,46 +1,43 @@
 package pages;
 
 
-import controls.ButtonControl;
-import controls.TextControl;
+import controls.Button;
+import controls.Text;
 import core.PropertiesContainer;
 
 public class RepoPage extends BasePage {
-    private ButtonControl settings;
-    private ButtonControl watchButton = ButtonControl.findButtonByCss("a[href='/glaaadis/Gladiko/subscription']");
-    private ButtonControl issues = ButtonControl.findButtonByCss("a[href='/glaaadis/Gladiko/issues']");
+    private Text text_Title() {return Text.byCss("h3>strong");}
+    private Button button_Settings() {return Button.byCss("a[href='/"+ PropertiesContainer.get("test.login")+"/"+PropertiesContainer.get("test" +
+        ".repositoryName")+"/settings']");}
+    private Button button_Watch() {return Button.byCss("a[href='/"+ PropertiesContainer.get("test.login")+"/"+PropertiesContainer.get("test" +
+        ".repositoryName")+"/subscription']");}
+    private Button button_Issues() {return Button.byCss("a[href='/"+ PropertiesContainer.get("test.login")+"/"+PropertiesContainer.get("test" +
+        ".repositoryName")+"/issues']");}
     public enum subscriptionTypes {Watch, UnWatch, Ignore}
 
-    public RepoPage() {
-//        title = TextControl.findTextByCss("h3>strong");
-//        settings = ButtonControl.findButtonByCss("a[href='/"+ PropertiesContainer.get("test.login")+"/"+PropertiesContainer.get("test.repositoryName")+"/settings']");
-//        watchButton = ButtonControl.findButtonByCss("a[href='/"+ PropertiesContainer.get("test.login")+"/"+PropertiesContainer.get("test.repositoryName")+"/subscription']");
-//        issues = ButtonControl.findButtonByCss("a[href='/"+ PropertiesContainer.get("test.login")+"/"+PropertiesContainer.get("test.repositoryName")+"/issues']");
-    }
-
     public SettingsPage goToSettings() {
-        settings.click();
+        button_Settings().click();
         return new SettingsPage();
     }
 
     public IssuesPage goToIssues() {
-        issues.click();
+        button_Issues().click();
         return new IssuesPage();
     }
 
     public void subscription(subscriptionTypes subscriptionTypes) {
-        watchButton.click();
+        button_Watch().click();
         switch (subscriptionTypes) {
             case Watch:
-                ButtonControl watch = ButtonControl.findButtonByCss("input[value='subscribed']");
+                Button watch = Button.byXpath("//input[@value='subscribed']/..");
                 watch.moveAndClickElement();
                 break;
             case UnWatch:
-                ButtonControl unWatch = ButtonControl.findButtonByCss("input[value='included']");
+                Button unWatch = Button.byXpath("//input[@value='included']/..");
                 unWatch.moveAndClickElement();
                 break;
             case Ignore:
-                ButtonControl ignore = ButtonControl.findButtonByCss("input[value='ignore']");
+                Button ignore = Button.byCss("//input[@value='ignore']/..");
                 ignore.moveAndClickElement();
                 break;
             default:

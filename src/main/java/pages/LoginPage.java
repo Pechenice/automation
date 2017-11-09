@@ -1,28 +1,20 @@
 package pages;
 
-import controls.ButtonControl;
-import controls.LinkControl;
-import controls.TextControl;
+import controls.Button;
+import controls.Link;
+import controls.Text;
 
 public class LoginPage extends BasePage {
-    private TextControl loginField;
-    private TextControl passwordField;
-    private ButtonControl signInButton;
-    private ButtonControl forgotPasswordButton;
-    private LinkControl createNewAccount;
-
-    public LoginPage () {
-        loginField = TextControl.findTextByCss("#login_field");
-        passwordField = TextControl.findTextByCss("#password");
-        signInButton = ButtonControl.findButtonByCss("input[name='commit']");
-        forgotPasswordButton = ButtonControl.findButtonByCss(".label-link");
-        createNewAccount = LinkControl.findLinkByCss("a[href='/join?source=login']");
-    }
+    private Text text_LoginField() {return Text.byCss("#login_field");}
+    private Text text_PasswordField() {return Text.byCss("#password");}
+    private Button button_SignIn() {return Button.byCss("input[name='commit']");}
+    private Button button_ForgotPassword() {return Button.byCss(".label-link");}
+    private Link link_CreateNewAccount() {return Link.byCss("a[href='/join?source=login']");}
 
     public StartLoggedPage logIn(String login, String password) {
-        loginField.sendKeys(login);
-        passwordField.sendKeys(password);
-        signInButton.click();
+        text_LoginField().sendKeys(login);
+        text_PasswordField().sendKeys(password);
+        button_SignIn().click();
         return new StartLoggedPage();
     }
 

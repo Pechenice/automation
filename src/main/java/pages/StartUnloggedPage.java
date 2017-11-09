@@ -1,16 +1,12 @@
 package pages;
 
-import controls.ButtonControl;
+import controls.Button;
 
 public class StartUnloggedPage extends BasePage {
-    private ButtonControl signIn;
-
-    public StartUnloggedPage() {
-        signIn = ButtonControl.findButtonByCss("a[href='/login']");
-    }
+    private Button button_SignIn() {return Button.byCss("a[href='/login']");}
 
     public LoginPage goToLoginPage() {
-        signIn.click();
+        button_SignIn().click();
         return new LoginPage();
     }
 }
