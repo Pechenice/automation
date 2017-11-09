@@ -15,12 +15,18 @@ public class EditProfilePage extends BasePage {
     private Link link_GoToProfileAfterUpdate(){return Link.byCss("button+a[href='/"+ PropertiesContainer.get("test.login")+"']");}
 
     public EditProfilePage upDateProfile(String name, String bio, String company) {
-        this.text_Name().clear();
-        this.text_Name().sendKeys(name);
-        this.text_Bio().clear();
-        this.text_Bio().sendKeys(bio);
-        this.text_Company().clear();
-        this.text_Company().sendKeys(company);
+        if (name != null) {
+            this.text_Name().clear();
+            this.text_Name().sendKeys(name);
+        }
+        if (bio != null) {
+            this.text_Bio().clear();
+            this.text_Bio().sendKeys(bio);
+        }
+        if (company != null) {
+            this.text_Company().clear();
+            this.text_Company().sendKeys(company);
+        }
         button_UpdateProfile().click();
         return new EditProfilePage();
     }

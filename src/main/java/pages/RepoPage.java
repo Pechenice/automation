@@ -6,13 +6,9 @@ import controls.Text;
 import core.PropertiesContainer;
 
 public class RepoPage extends BasePage {
-    private Text text_Title() {return Text.byCss("h3>strong");}
-    private Button button_Settings() {return Button.byCss("a[href='/"+ PropertiesContainer.get("test.login")+"/"+PropertiesContainer.get("test" +
-        ".repositoryName")+"/settings']");}
-    private Button button_Watch() {return Button.byCss("a[href='/"+ PropertiesContainer.get("test.login")+"/"+PropertiesContainer.get("test" +
-        ".repositoryName")+"/subscription']");}
-    private Button button_Issues() {return Button.byCss("a[href='/"+ PropertiesContainer.get("test.login")+"/"+PropertiesContainer.get("test" +
-        ".repositoryName")+"/issues']");}
+    private Button button_Settings() {return Button.byCss("a[data-selected-links$='settings']");}
+    private Button button_Watch() {return Button.byCss("a[class$='js-menu-target']");}
+    private Button button_Issues() {return Button.byCss("a[href$='/issues/new'][class^='btn']");}
     public enum subscriptionTypes {Watch, UnWatch, Ignore}
 
     public SettingsPage goToSettings() {

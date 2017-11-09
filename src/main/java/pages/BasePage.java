@@ -1,14 +1,11 @@
 package pages;
 
-import controls.Text;
 import core.Driver;
 
 public class BasePage {
 
-    private Text text_Title() { return Text.byCss("head title");}
-
     public String getTitleText() {
-        return text_Title().getText();
+        return Driver.get().getTitle();
     }
 
     public String getCurrentUrl() {
