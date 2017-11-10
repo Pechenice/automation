@@ -21,7 +21,7 @@ public class TestBase {
 
     @AfterTest
     public void tearDown() {
-        clearUp();
+//        clearUp();
         Driver.quit();
     }
 

@@ -10,9 +10,7 @@ import java.util.List;
 public class SearchResultPage extends BasePage {
     private WebElement searches;
 
-    public SearchResultPage() {
-
-    }
+    public SearchResultPage() {}
 
     public SearchResultPage(WebElement element) {
         searches = element;

@@ -13,7 +13,7 @@ import java.util.List;
 
 import static helpers.TestHelper.stringGenerator;
 
-public class GitHubTest extends TestBase{
+public class GitHubTest extends TestBase {
 
     @Test
     public void logInTest() {
@@ -26,7 +26,7 @@ public class GitHubTest extends TestBase{
         RepoCreationPage repoCreationPagePage = new StartLoggedPage().goToRepoCreation();
         String repoName = stringGenerator("RepoName");
         RepoPage repoPage = repoCreationPagePage.createRepo(repoName);
-        Assert.assertEquals(repoPage.getTitleText(), PropertiesContainer.get("test.login")+"/" + repoName, "Title is different.");
+        Assert.assertEquals(repoPage.getTitleText(), PropertiesContainer.get("test.login") + "/" + repoName, "Title is different.");
 
         deleteRepo(repoPage, repoName);
     }
@@ -43,7 +43,7 @@ public class GitHubTest extends TestBase{
         ProfilePage profilePage = editProfilePage.upDateProfile(profileName, profileBio, profileCompany).goToProfileAfterUpdate();
         List<Base> listOfProfileInformation = profilePage.getProfileInformation();
         List<String> itemsText = new ArrayList<>();
-        for(Base info: listOfProfileInformation) {
+        for (Base info : listOfProfileInformation) {
             itemsText.add(info.getText());
         }
 
@@ -53,54 +53,55 @@ public class GitHubTest extends TestBase{
         Assert.assertTrue(!pictureAfterUpdate.equals(pictureBeforeUpdate), "Avatar picture was same, as previous one.");
 
         deleteProfileInfo(profilePage);
-        }
+    }
 
-        @Test
-        public void issueNotification() throws Exception {
-        RepoPage repoPage = new StartLoggedPage().goToRepoCreation().createRepo(PropertiesContainer.get("test.repositoryName"));
+    @Test
+    public void issueNotification() throws Exception {
+        String repoName = stringGenerator("Nagibator");
+        RepoPage repoPage = new StartLoggedPage().goToRepoCreation().createRepo(repoName);
         repoPage.subscription(RepoPage.subscriptionTypes.Watch);
         IssueCreationPage issueCreationPage = repoPage.goToIssues().goToIssueCreation();
         issueCreationPage.makeAssigneer(PropertiesContainer.get("test.login"));
-        issueCreationPage.markWithLabel();
-        IssuesPage issuesPage = issueCreationPage.fillTheIssue(PropertiesContainer.get("test.issueCreationTitle"), PropertiesContainer.get("test.issueCreationDescription"));
+        List<IssueCreationPage.typesOfIssue> allLabels = new ArrayList<>();
+        allLabels.add(IssueCreationPage.typesOfIssue.Bug);
+        allLabels.add(IssueCreationPage.typesOfIssue.FirstIssue);
+        issueCreationPage.markWithLabel(allLabels);
+        String issueTitle = stringGenerator("Danger!");
+        String issueDescription = stringGenerator("Glavatar");
+        IssuesPage issuesPage = issueCreationPage.fillTheIssue(issueTitle, issueDescription);
         String createdIssueUrl = issuesPage.getCurrentUrl();
-        StartLoggedPage loggedPage = new StartLoggedPage().signOut().goToLoginPage().logIn(PropertiesContainer.get("test.otherlogin"),PropertiesContainer.get("test.otherpassword"));
-//            loggedPage.search(PropertiesContainer.get("test.repositoryName"));
-            List<SearchResultPage> searchResults = loggedPage.search("Gladiko").resultsOfSearch();
-            SearchResultPage resultPage = null;
-            for (SearchResultPage searchResult: searchResults) {
-                String link = searchResult.getSearches().getAttribute("href");
-                if (link.equals("https://github.com/glaaadis/Gladiko")) {
-//                if (link.equals("https://github.com/"+PropertiesContainer.get("test.login")+"/"+PropertiesContainer.get("test.repositoryName"))) {
-                    resultPage = searchResult;
-                    break;
-                }
+        StartLoggedPage loggedPage = new StartLoggedPage().signOut().goToLoginPage().logIn(PropertiesContainer.get("test.otherlogin"), PropertiesContainer.get("test.otherpassword"));
+        List<SearchResultPage> searchResults = loggedPage.search(repoName).resultsOfSearch();
+        SearchResultPage resultPage = null;
+        for (SearchResultPage searchResult : searchResults) {
+            String link = searchResult.getSearches().getAttribute("href");
+            if (link.equals("https://github.com/"+PropertiesContainer.get("test.login")+"/"+repoName)) {
+                resultPage = searchResult;
+                break;
             }
-            if (resultPage == null) {
-                throw new Exception("Searched element wasn't found");
-            }
-            resultPage.getSearches().click();
-            RepoPage anotherRepoPage = new RepoPage();
-            List<IssuesPage> listOfIssuesPage = new ArrayList<>();
-//            anotherRepoPage.goToIssues();
-//            IssuesPage issuesPage1 = anotherRepoPage.goToIssues().getCreatedIssues();
-            listOfIssuesPage = anotherRepoPage.goToIssues().getCreatedIssues();
-            IssuesPage foundedIssuePage = null;
-            for (IssuesPage onePage: listOfIssuesPage) {
-                String issueUrl = onePage.getSearchResult().getAttribute("href");
-                if (issueUrl.equals(createdIssueUrl)) {
-                    foundedIssuePage = onePage;
-                    break;
-                }
-            }
-            foundedIssuePage.getSearchResult().click();
-            IssueCreationPage openedIssue = new IssueCreationPage();
-            openedIssue.leaveCommentToUser(PropertiesContainer.get("test.login"), PropertiesContainer.get("test.comment"));
-
-            // remove issues from story
-            // make find all issues
-            // watch it doesn't work correctly
         }
+        if (resultPage == null) {
+            throw new Exception("Searched repository wasn't found");
+        }
+        resultPage.getSearches().click();
+        RepoPage anotherRepoPage = new RepoPage();
+        List<IssuesPage> listOfIssuesPage = anotherRepoPage.goToIssues().getCreatedIssues();
+        IssuesPage foundedIssuePage = null;
+        for (IssuesPage onePage : listOfIssuesPage) {
+            String issueUrl = onePage.getSearchResult().getAttribute("href");
+            if (issueUrl.equals(createdIssueUrl)) {
+                foundedIssuePage = onePage;
+                break;
+            }
+        }
+        foundedIssuePage.getSearchResult().click();
+        IssueCreationPage openedIssue = new IssueCreationPage();
+        openedIssue.leaveCommentToUser(PropertiesContainer.get("test.login"), stringGenerator("Sad"));
+
+        // remove issues from story
+        // make find all issues
+        // watch it doesn't work correctly
+    }
 
 
     private void deleteRepo(RepoPage repoPage, String repoName) {

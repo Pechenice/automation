@@ -4,6 +4,9 @@ import controls.Button;
 import controls.Text;
 import core.PropertiesContainer;
 
+import java.util.List;
+import java.util.NoSuchElementException;
+
 public class IssueCreationPage extends BasePage{
     private Button button_Assignees() {
         return Button.byCss("button[aria-label^='Assign']");
@@ -23,6 +26,17 @@ public class IssueCreationPage extends BasePage{
     private Button button_CommentSubmit() {
         return Button.byCss("#partial-new-comment-form-actions button[type='submit']");
     }
+    public enum typesOfIssue {Bug, Duplicate, Enhancement, FirstIssue, HelpWanted, Invalid, Question, Wontfix}
+    private Button button_Bug() {return Button.byCss("div[data-name='bug']");}
+    private Button button_Duplicate() {return Button.byCss("div[data-name='duplicate']");}
+    private Button button_Enhancement() {return Button.byCss("div[data-name='enhancement']");}
+    private Button button_FirstIssue() {return Button.byCss("div[data-name^='good']");}
+    private Button button_HelpWanted() {return Button.byCss("div[data-name^='help']");}
+    private Button button_Invalid() {return Button.byCss("div[data-name='invalid']");}
+    private Button button_Question() {return Button.byCss("div[data-name='question']");}
+    private Button button_Wontfix() {return Button.byCss("div[data-name='wontfix']");}
+    private Button button_ShutDownLabels() {return Button.byCss(".js-new-issue-labels-container svg[aria-label='Close'][class^='octicon']");}
+
 
     public void leaveCommentToUser(String toUser, String comment) {
         Text commentField = Text.byCss("#new_comment_field");
@@ -40,12 +54,22 @@ public class IssueCreationPage extends BasePage{
         shutDownAssigneer.moveAndClickElement();
     }
 
-    public void markWithLabel() {
+    public void markWithLabel(List<typesOfIssue> typesList) {
         button_Labels().click();
-        Button bug = Button.byCss("div[data-name='bug']");
-        bug.click();
-        Button shutDownLabels = Button.byCss(".js-new-issue-labels-container svg[aria-label='Close'][class^='octicon']");
-        shutDownLabels.click();
+        for (typesOfIssue typesOfIssue: typesList) {
+            switch (typesOfIssue) {
+                case Bug: button_Bug().click(); break;
+                case Duplicate: button_Duplicate().click(); break;
+                case Enhancement: button_Enhancement().click(); break;
+                case FirstIssue: button_FirstIssue().click(); break;
+                case HelpWanted: button_HelpWanted().click(); break;
+                case Invalid: button_Invalid().click(); break;
+                case Question: button_Question().click(); break;
+                case Wontfix: button_Wontfix().click(); break;
+                default: throw new IllegalStateException("No such element");
+            }
+        }
+        button_ShutDownLabels().click();
     }
 
     public IssuesPage fillTheIssue(String name, String description) {
