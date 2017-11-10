@@ -1,13 +1,13 @@
 package helpers;
 
-import pages.StartLoggedPage;
-import pages.StartUnloggedPage;
+import pages.HomeLoggedPage;
+import pages.HomeUnloggedPage;
 
 import java.util.Random;
 
 public class TestHelper {
-    public StartLoggedPage logIn(String userLogin, String userPassword) {
-        StartUnloggedPage startUnloggedPagePage = new StartUnloggedPage();
+    public HomeLoggedPage logIn(String userLogin, String userPassword) {
+        HomeUnloggedPage startUnloggedPagePage = new HomeUnloggedPage();
         return startUnloggedPagePage.goToLoginPage().logIn(userLogin, userPassword);
     }
 

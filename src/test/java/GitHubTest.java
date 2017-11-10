@@ -1,8 +1,8 @@
 
 import controls.Base;
+import core.Driver;
 import core.PropertiesContainer;
 import core.TestBase;
-import helpers.TestHelper;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
@@ -17,15 +17,15 @@ public class GitHubTest extends TestBase {
 
     @Test
     public void logInTest() {
-        StartLoggedPage startLoggedPage = new StartLoggedPage();
+        HomeLoggedPage startLoggedPage = new HomeLoggedPage();
         Assert.assertEquals(startLoggedPage.getTitleText(), "GitHub", "Title is different.");
     }
 
     @Test
     public void createRepo() {
-        RepoCreationPage repoCreationPagePage = new StartLoggedPage().goToRepoCreation();
+        RepoCreationPage repoCreationPagePage = new HomeLoggedPage().goToRepoCreation();
         String repoName = stringGenerator("RepoName");
-        RepoPage repoPage = repoCreationPagePage.createRepo(repoName);
+        OpenedRepoPage repoPage = repoCreationPagePage.createRepo(repoName);
         Assert.assertEquals(repoPage.getTitleText(), PropertiesContainer.get("test.login") + "/" + repoName, "Title is different.");
 
         deleteRepo(repoPage, repoName);
@@ -36,7 +36,7 @@ public class GitHubTest extends TestBase {
         String profileName = stringGenerator("Unicorn");
         String profileBio = stringGenerator("Bio");
         String profileCompany = stringGenerator("Company");
-        EditProfilePage editProfilePage = new StartLoggedPage().goToProfilePage().goToEditProfilePage();
+        EditProfilePage editProfilePage = new HomeLoggedPage().goToProfilePage().goToEditProfilePage();
         String pictureBeforeUpdate = editProfilePage.getImageChecker().getAttribute("src");
         editProfilePage = editProfilePage.upDateAvatar(new File("src/main/resources/unicorn.jpg").getAbsolutePath());
         String pictureAfterUpdate = editProfilePage.getImageChecker().getAttribute("src");
@@ -58,8 +58,8 @@ public class GitHubTest extends TestBase {
     @Test
     public void issueNotification() throws Exception {
         String repoName = stringGenerator("Nagibator");
-        RepoPage repoPage = new StartLoggedPage().goToRepoCreation().createRepo(repoName);
-        repoPage.subscription(RepoPage.subscriptionTypes.Watch);
+        OpenedRepoPage repoPage = new HomeLoggedPage().goToRepoCreation().createRepo(repoName);
+        repoPage.subscription(OpenedRepoPage.subscriptionTypes.Watch);
         IssueCreationPage issueCreationPage = repoPage.goToIssues().goToIssueCreation();
         issueCreationPage.makeAssigneer(PropertiesContainer.get("test.login"));
         List<IssueCreationPage.typesOfIssue> allLabels = new ArrayList<>();
@@ -70,10 +70,10 @@ public class GitHubTest extends TestBase {
         String issueDescription = stringGenerator("Glavatar");
         IssuesPage issuesPage = issueCreationPage.fillTheIssue(issueTitle, issueDescription);
         String createdIssueUrl = issuesPage.getCurrentUrl();
-        StartLoggedPage loggedPage = new StartLoggedPage().signOut().goToLoginPage().logIn(PropertiesContainer.get("test.otherlogin"), PropertiesContainer.get("test.otherpassword"));
-        List<SearchResultPage> searchResults = loggedPage.search(repoName).resultsOfSearch();
-        SearchResultPage resultPage = null;
-        for (SearchResultPage searchResult : searchResults) {
+        HomeLoggedPage loggedPage = new HomeLoggedPage().signOut().goToLoginPage().logIn(PropertiesContainer.get("test.otherlogin"), PropertiesContainer.get("test.otherpassword"));
+        List<SearchRepoResultPage> searchResults = loggedPage.search(repoName).resultsOfSearch();
+        SearchRepoResultPage resultPage = null;
+        for (SearchRepoResultPage searchResult : searchResults) {
             String link = searchResult.getSearches().getAttribute("href");
             if (link.equals("https://github.com/"+PropertiesContainer.get("test.login")+"/"+repoName)) {
                 resultPage = searchResult;
@@ -84,8 +84,8 @@ public class GitHubTest extends TestBase {
             throw new Exception("Searched repository wasn't found");
         }
         resultPage.getSearches().click();
-        RepoPage anotherRepoPage = new RepoPage();
-        List<IssuesPage> listOfIssuesPage = anotherRepoPage.goToIssues().getCreatedIssues();
+        OpenedRepoPage anotherRepoPage = new OpenedRepoPage();
+        List<IssuesPage> listOfIssuesPage = anotherRepoPage.goToIssues().getCreatedIssue(PropertiesContainer.get("test.login"), repoName);
         IssuesPage foundedIssuePage = null;
         for (IssuesPage onePage : listOfIssuesPage) {
             String issueUrl = onePage.getSearchResult().getAttribute("href");
@@ -98,13 +98,11 @@ public class GitHubTest extends TestBase {
         IssueCreationPage openedIssue = new IssueCreationPage();
         openedIssue.leaveCommentToUser(PropertiesContainer.get("test.login"), stringGenerator("Sad"));
 
-        // remove issues from story
-        // make find all issues
-        // watch it doesn't work correctly
+        // clean up after test issues from story
     }
 
 
-    private void deleteRepo(RepoPage repoPage, String repoName) {
+    private void deleteRepo(OpenedRepoPage repoPage, String repoName) {
         SettingsPage settingsPage = repoPage.goToSettings();
         settingsPage.deleteRepoButton().click();
         settingsPage.deleteRepo(repoName);
@@ -113,6 +111,10 @@ public class GitHubTest extends TestBase {
     private void deleteProfileInfo(ProfilePage profilePage) {
         profilePage.goToEditProfilePage().upDateAvatar(new File("src/main/resources/no_unicorn.png").getAbsolutePath()).deleteAllInfoFromProfile();
     }
-}
 
-//IssueCreationPage - make labels dynamics
+    @Test
+    public void titlesVerification() {
+        Driver.get().get("https://github.com/glaaadis/Gladiko/issues");
+        System.out.println(Driver.get().getTitle());
+    }
+}

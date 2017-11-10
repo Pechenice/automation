@@ -10,6 +10,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 
 public abstract class Base {
     protected WebElement element;
@@ -66,5 +68,4 @@ public abstract class Base {
         Actions actions = new Actions(Driver.get());
         actions.moveToElement(element).click().build().perform();
     }
-
 }

@@ -1,11 +1,11 @@
 package pages;
 
 import controls.Button;
+import controls.Link;
 import controls.Text;
-import core.PropertiesContainer;
+import org.testng.Assert;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class IssueCreationPage extends BasePage{
     private Button button_Assignees() {
@@ -36,6 +36,7 @@ public class IssueCreationPage extends BasePage{
     private Button button_Question() {return Button.byCss("div[data-name='question']");}
     private Button button_Wontfix() {return Button.byCss("div[data-name='wontfix']");}
     private Button button_ShutDownLabels() {return Button.byCss(".js-new-issue-labels-container svg[aria-label='Close'][class^='octicon']");}
+    private Link link_StylingInfo() {return Link.byCss(".tabnav-extra");}
 
 
     public void leaveCommentToUser(String toUser, String comment) {
@@ -46,11 +47,10 @@ public class IssueCreationPage extends BasePage{
 
     public void makeAssigneer(String nameOfAssigneer) {
         button_Assignees().click();
-        Button selfAssign = Button.byCss("div[data-contents-url^='/glaaadis/'] div[role='menuitem']");
-//        ButtonControl selfAssign = ButtonControl.findButtonByCss("div[data-contents-url^='/"+nameOfAssigneer+"/'] div[role='menuitem']");
+        Button selfAssign = Button.byCss("div[data-contents-url^='/"+nameOfAssigneer+"/'] div[role='menuitem']");
         selfAssign.waitForElementVisible();
         selfAssign.moveAndClickElement();
-        Button shutDownAssigneer = Button.byCss("div[data-contents-url^='/"+ PropertiesContainer.get("test.login")+"/'] svg[aria-label='Close'][class^='octicon']");
+        Button shutDownAssigneer = Button.byCss("div[data-contents-url^='/"+ nameOfAssigneer +"/'] svg[aria-label='Close'][class^='octicon']");
         shutDownAssigneer.moveAndClickElement();
     }
 
@@ -76,6 +76,19 @@ public class IssueCreationPage extends BasePage{
         text_TitleField().sendKeys(name);
         text_DescriptionField().sendKeys(description);
         button_SubmitNewIssue().click();
-        return new IssuesPage();
+        IssuesPage issuesPage = new IssuesPage();
+        try {
+            issuesPage.verifyIssuePage();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            Assert.fail();
+        }
+        return issuesPage;
+    }
+
+    protected void verifyIssueCreation() throws Exception {
+        if (!link_StylingInfo().isElementVisible()) {
+            throw new Exception("Styling information link is not visible on Issue Creation Page.");
+        }
     }
 }

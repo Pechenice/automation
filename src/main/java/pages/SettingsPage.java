@@ -2,6 +2,7 @@ package pages;
 
 import controls.Button;
 import controls.Text;
+import org.testng.Assert;
 
 public class SettingsPage extends BasePage {
     private Button button_DeleteRepo() {return Button.byCss("button[data-facebox='#delete_repo_confirm']");}
@@ -12,9 +13,22 @@ public class SettingsPage extends BasePage {
         return button_DeleteRepo();
     }
 
-    public StartLoggedPage deleteRepo(String repoName) {
+    public HomeLoggedPage deleteRepo(String repoName) {
         text_RepoNameForConfirmationPopup().sendKeys(repoName);
         button_DeleteFromConfirmationPopup().click();
-        return new StartLoggedPage();
+        HomeLoggedPage homeLoggedPage = new HomeLoggedPage();
+        try {
+            homeLoggedPage.verifyHomeLoggedPage();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            Assert.fail();
+        }
+        return homeLoggedPage;
+    }
+
+    protected void verifySettings() throws Exception {
+        if (!button_DeleteRepo().isElementClickable()) {
+            throw new Exception("Delete this repository button is not clickable on Settings page.");
+        }
     }
 }

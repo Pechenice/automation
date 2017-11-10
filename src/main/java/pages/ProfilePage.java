@@ -4,6 +4,7 @@ import controls.Base;
 import controls.Button;
 import controls.Text;
 import org.openqa.selenium.NoSuchElementException;
+import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,7 @@ public class ProfilePage extends BasePage {
             return null;
         }
     }
+    private Text text_WhenUserJoined() {return Text.byCss("li[aria-label^='Member'][aria-label$='since']");}
 
     public ProfilePage() {
         isProfileEmpty = !Text.byCss("span[class^='p-name']").isElementVisible();
@@ -46,7 +48,14 @@ public class ProfilePage extends BasePage {
 
     public EditProfilePage goToEditProfilePage() {
         button_ChangeAvatar().click();
-        return new EditProfilePage();
+        EditProfilePage editProfilePage = new EditProfilePage();
+        try {
+            editProfilePage.verifyEditProfile();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            Assert.fail();
+        }
+        return editProfilePage;
     }
 
     public List<Base> getProfileInformation() {
@@ -61,5 +70,11 @@ public class ProfilePage extends BasePage {
             listOfProfileInfo.add(text_ProfileCompany());
         }
         return listOfProfileInfo;
+    }
+
+    protected void verifyProfile() throws Exception {
+        if (!text_WhenUserJoined().isElementVisible()) {
+            throw new Exception("Text field with information about when user joined is not Visible in Profile Page");
+        }
     }
 }
