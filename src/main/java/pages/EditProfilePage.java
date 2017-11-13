@@ -3,8 +3,13 @@ package pages;
 import controls.Button;
 import controls.Link;
 import controls.Text;
+import core.Driver;
 import core.PropertiesContainer;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+
+import java.util.List;
 
 public class EditProfilePage extends BasePage {
     private Text text_Name() {return Text.byCss("#user_profile_name");}
@@ -34,8 +39,7 @@ public class EditProfilePage extends BasePage {
         try {
             editProfilePage.verifyEditProfile();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail();
+            Assert.fail(e.getMessage()  );
         }
         return editProfilePage;
     }
@@ -55,8 +59,7 @@ public class EditProfilePage extends BasePage {
         try {
             editProfilePage.verifyEditProfile();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail();
+            Assert.fail(e.getMessage());
         }
         return editProfilePage;
     }
@@ -67,8 +70,7 @@ public class EditProfilePage extends BasePage {
         try {
             profilePage.verifyProfile();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail();
+            Assert.fail(e.getMessage());
         }
         return profilePage;
     }
@@ -78,8 +80,13 @@ public class EditProfilePage extends BasePage {
     }
 
     protected void verifyEditProfile() throws Exception {
-        if (text_PrivateContributions().isElementNotPresent()) {
+        List<WebElement> listOfElementsToCheck = Driver.get().findElements(By.xpath("//label[@for='user_show_private_contribution_count']"));
+        if (listOfElementsToCheck.size() == 0) {
             throw new Exception("Checkbox with private contributions is absent on Editing Profile Page.");
+        }
+        WebElement oneElement = listOfElementsToCheck.get(0);
+        if (!oneElement.isDisplayed()) {
+            throw new Exception("Checkbox with private contributions is not displayed on Editing Profile Page.");
         }
     }
 }

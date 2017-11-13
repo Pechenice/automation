@@ -3,6 +3,9 @@ package pages;
 import controls.Button;
 import controls.Link;
 import controls.Text;
+import core.Driver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.util.List;
@@ -80,14 +83,18 @@ public class IssueCreationPage extends BasePage{
         try {
             issuesPage.verifyIssuePage();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail();
+            Assert.fail(e.getMessage());
         }
         return issuesPage;
     }
 
     protected void verifyIssueCreation() throws Exception {
-        if (!link_StylingInfo().isElementVisible()) {
+        List<WebElement> listOfElementsToCheck = Driver.get().findElements(By.cssSelector(".tabnav-extra"));
+        if (listOfElementsToCheck.size() == 0) {
+            throw new Exception("Styling information link absent on Issue Creation Page.");
+        }
+        WebElement stylingInfo = listOfElementsToCheck.get(0);
+        if (!stylingInfo.isDisplayed()) {
             throw new Exception("Styling information link is not visible on Issue Creation Page.");
         }
     }

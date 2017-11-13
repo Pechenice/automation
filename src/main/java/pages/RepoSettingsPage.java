@@ -2,9 +2,14 @@ package pages;
 
 import controls.Button;
 import controls.Text;
+import core.Driver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-public class SettingsPage extends BasePage {
+import java.util.List;
+
+public class RepoSettingsPage extends BasePage {
     private Button button_DeleteRepo() {return Button.byCss("button[data-facebox='#delete_repo_confirm']");}
     private Text text_RepoNameForConfirmationPopup() {return Text.byCss(".facebox-popup input[type='text']");}
     private Button button_DeleteFromConfirmationPopup() {return Button.byCss(".facebox-popup button[type='submit']");}
@@ -20,14 +25,18 @@ public class SettingsPage extends BasePage {
         try {
             homeLoggedPage.verifyHomeLoggedPage();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail();
+            Assert.fail(e.getMessage());
         }
         return homeLoggedPage;
     }
 
     protected void verifySettings() throws Exception {
-        if (!button_DeleteRepo().isElementClickable()) {
+        List<WebElement> listOfElementsToCheck = Driver.get().findElements(By.cssSelector("button[data-facebox='#delete_repo_confirm']"));
+        if (listOfElementsToCheck.size() == 0) {
+            throw new Exception("Delete this repository button is absent on Settings page.");
+        }
+        WebElement deleteRepo = listOfElementsToCheck.get(0);
+        if (!deleteRepo.isEnabled()) {
             throw new Exception("Delete this repository button is not clickable on Settings page.");
         }
     }

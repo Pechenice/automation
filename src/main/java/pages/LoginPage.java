@@ -3,7 +3,12 @@ package pages;
 import controls.Button;
 import controls.Link;
 import controls.Text;
+import core.Driver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+
+import java.util.List;
 
 public class LoginPage extends BasePage {
     private Text text_LoginField() {return Text.byCss("#login_field");}
@@ -20,15 +25,19 @@ public class LoginPage extends BasePage {
         try {
             homeLoggedPage.verifyHomeLoggedPage();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail();
+            Assert.fail(e.getMessage());
         }
         return homeLoggedPage;
     }
 
     protected void verifyLoginPage() throws Exception {
-        if (!link_CreateNewAccount().isElementVisible()) {
+        List<WebElement> listOfElementsToCheck = Driver.get().findElements(By.cssSelector("a[href='/join?source=login']"));
+        if (listOfElementsToCheck.size() == 0) {
             throw new Exception("Create an account link is absent on Login Page.");
+        }
+        WebElement createNewAccount = listOfElementsToCheck.get(0);
+        if (!createNewAccount.isDisplayed()) {
+            throw new Exception("Create an account link is not visible on Login Page.");
         }
     }
 

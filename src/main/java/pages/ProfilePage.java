@@ -3,7 +3,10 @@ package pages;
 import controls.Base;
 import controls.Button;
 import controls.Text;
+import core.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.util.ArrayList;
@@ -52,8 +55,7 @@ public class ProfilePage extends BasePage {
         try {
             editProfilePage.verifyEditProfile();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail();
+            Assert.fail(e.getMessage());
         }
         return editProfilePage;
     }
@@ -73,8 +75,13 @@ public class ProfilePage extends BasePage {
     }
 
     protected void verifyProfile() throws Exception {
-        if (!text_WhenUserJoined().isElementVisible()) {
-            throw new Exception("Text field with information about when user joined is not Visible in Profile Page");
+        List<WebElement> listOfElementsToCheck = Driver.get().findElements(By.cssSelector("li[aria-label^='Member'][aria-label$='since']"));
+        if (listOfElementsToCheck.size() == 0) {
+            throw new Exception("Text field with information about when user joined is absent in Profile Page");
+        }
+        WebElement whenUserJoined = listOfElementsToCheck.get(0);
+        if (!whenUserJoined.isDisplayed()) {
+            throw new Exception("Text field with information about when user joined is not visible in Profile Page");
         }
     }
 }

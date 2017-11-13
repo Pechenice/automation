@@ -1,9 +1,14 @@
 package pages;
 
 import controls.Button;
+import core.Driver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-public class OpenedRepoPage extends BasePage {
+import java.util.List;
+
+public class RepoOpenedPage extends BasePage {
     private Button button_Settings() {return Button.byCss("a[data-selected-links$='settings']");}
     private Button button_NotificationsDropDown() {return Button.byCss("a[class$='js-menu-target']");}
     private Button button_Issues() {return Button.byCss("span a[href$='/issues']");}
@@ -14,14 +19,13 @@ public class OpenedRepoPage extends BasePage {
 
     public enum subscriptionTypes {Watch, UnWatch, Ignore}
 
-    public SettingsPage goToSettings() {
+    public RepoSettingsPage goToSettings() {
         button_Settings().click();
-        SettingsPage settingsPage = new SettingsPage();
+        RepoSettingsPage settingsPage = new RepoSettingsPage();
         try {
             settingsPage.verifySettings();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail();
+            Assert.fail(e.getMessage());
         }
         return settingsPage;
     }
@@ -32,8 +36,7 @@ public class OpenedRepoPage extends BasePage {
         try {
             issuesPage.verifyIssuePage();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail();
+            Assert.fail(e.getMessage());
         }
         return issuesPage;
     }
@@ -53,7 +56,12 @@ public class OpenedRepoPage extends BasePage {
     }
 
     protected void verifyOpenedRepoPage() throws Exception {
-        if (!button_SetUpInDesktop().isElementClickable()) {
+        List<WebElement> listOfElementsToCheck = Driver.get().findElements(By.cssSelector("a[href='https://desktop.github.com']"));
+        if (listOfElementsToCheck.size()==0) {
+            throw new Exception("Set up in Desktop button is absent on opened certain Repository Page.");
+        }
+        WebElement setUpInDesktop = listOfElementsToCheck.get(0);
+        if (!setUpInDesktop.isEnabled()) {
             throw new Exception("Set up in Desktop button is not clickable on opened certain Repository Page.");
         }
     }

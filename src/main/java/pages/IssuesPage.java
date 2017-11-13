@@ -36,8 +36,7 @@ public class IssuesPage extends BasePage {
         try {
             issueCreationPage.verifyIssueCreation();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail();
+            Assert.fail(e.getMessage());
         }
         return issueCreationPage;
     }
@@ -52,7 +51,12 @@ public class IssuesPage extends BasePage {
     }
 
     protected void verifyIssuePage() throws Exception {
-        if (!button_IssueTabIsActive().isElementClickable()) {
+        List<WebElement> listOfElementsToCheck = Driver.get().findElements(By.cssSelector("span a[href$='/issues'][class~='selected']"));
+        if (listOfElementsToCheck.size() == 0) {
+            throw new Exception("Button New Issue is not present on Issue Page.");
+        }
+        WebElement issueTable = listOfElementsToCheck.get(0);
+        if (!issueTable.isEnabled()) {
             throw new Exception("Button New Issue is not clickable on Issue Page.");
         }
     }

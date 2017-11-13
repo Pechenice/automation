@@ -2,8 +2,13 @@ package pages;
 
 import controls.Button;
 import controls.Text;
+import core.Driver;
 import core.PropertiesContainer;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+
+import java.util.List;
 
 public class HomeLoggedPage extends BasePage {
     private Button button_SignOut() {
@@ -13,7 +18,7 @@ public class HomeLoggedPage extends BasePage {
         return Button.byCss("a[href='/" +PropertiesContainer.get("test.login")+ "']");
     }
     private Button button_Profile() {
-        return Button.byCss("summary[class^='HeaderNavlink']>img[alt='@"+ PropertiesContainer.get("test.login")+"']");
+        return Button.byCss("summary[class^='HeaderNavlink']>img[alt^='@']");
     }
     private Button button_CreateRepo() {
         return Button.byCss("a[href='/new'][class^='btn'][data-ga-click^='Hello World']");
@@ -28,8 +33,7 @@ public class HomeLoggedPage extends BasePage {
         try {
             repoCreationPage.verifyRepoCreation();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail();
+            Assert.fail(e.getMessage());
         }
         return repoCreationPage;
     }
@@ -41,8 +45,7 @@ public class HomeLoggedPage extends BasePage {
         try {
             profilePage.verifyProfile();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail();
+            Assert.fail(e.getMessage());
         }
         return profilePage;
     }
@@ -54,28 +57,31 @@ public class HomeLoggedPage extends BasePage {
         try {
             homeUnloggedPage.verifyHomeUnloggedPage();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail();
+            Assert.fail(e.getMessage());
         }
         return homeUnloggedPage;
     }
 
-    public SearchRepoResultPage search(String search) {
+    public SearchResultRepoPage search(String search) {
         text_SearchField().sendKeys(search);
         text_SearchField().pressEnter();
-        SearchRepoResultPage searchRepoResultPage = new SearchRepoResultPage();
+        SearchResultRepoPage searchRepoResultPage = new SearchResultRepoPage();
         try {
             searchRepoResultPage.verifySearchRepoResults();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail();
+            Assert.fail(e.getMessage());
         }
         return searchRepoResultPage;
     }
 
     protected void verifyHomeLoggedPage() throws Exception {
-        if (!button_CreateRepo().isElementVisible()) {
-            throw new Exception("Start a project on Logged Home Page is not visible.");
+        List<WebElement> listOfElementsToCheck = Driver.get().findElements(By.cssSelector("a[href='/new'][class^='btn'][data-ga-click^='Hello World']"));
+        if (listOfElementsToCheck.size() == 0) {
+            throw new Exception("Start a project button is absent on Logged Home Page.");
+        }
+        WebElement createRepo = listOfElementsToCheck.get(0);
+        if (!createRepo.isDisplayed()) {
+            throw new Exception("Start a project button on Logged Home Page is not visible.");
         }
     }
 }
