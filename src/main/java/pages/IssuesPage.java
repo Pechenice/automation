@@ -1,8 +1,6 @@
 package pages;
 
 import controls.Button;
-import controls.Link;
-import controls.Text;
 import core.Driver;
 
 import org.openqa.selenium.By;
