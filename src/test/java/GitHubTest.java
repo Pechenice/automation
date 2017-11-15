@@ -101,11 +101,5 @@ public class GitHubTest extends TestBase {
         foundedIssuePage.getSearchResult().click();
         IssueCreationPage openedIssue = new IssueCreationPage();
         openedIssue.leaveCommentToUser(PropertiesContainer.get("test.login"), stringGenerator("Sad"));
-
-        Driver.get().findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
-
-        ArrayList<String> windows = new ArrayList<>(Driver.get().getWindowHandles());
-        Driver.get().switchTo().window(windows.get(0));
-        Driver.get().navigate().to("https://gmail.com");
     }
 }
