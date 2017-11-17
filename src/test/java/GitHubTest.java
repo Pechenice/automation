@@ -1,10 +1,7 @@
 
 import controls.Base;
-import core.Driver;
 import core.PropertiesContainer;
 import core.TestBase;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
@@ -13,7 +10,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static helpers.TestHelper.stringGenerator;
+import static helpers.DataGenerator.stringGenerator;
 
 public class GitHubTest extends TestBase {
 

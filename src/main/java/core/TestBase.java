@@ -30,17 +30,17 @@ public class TestBase {
 
     @AfterTest
     public void tearDown() {
-        clearUp(deleteAfterTest);
-        Driver.quit();
-    }
-
-    public void clearUp(List<actions> deleteAfterTest) {
         for (actions actionsList: deleteAfterTest) {
             switch (actionsList) {
-                case deleteRepo: deleteRepo(); break;
-                case resetProfileInfo: resetProfileInfo(); break;
+                case deleteRepo:
+                    deleteRepo();
+                    break;
+                case resetProfileInfo:
+                    resetProfileInfo();
+                    break;
             }
         }
+        Driver.quit();
     }
 
     public void setUserLogin(String userLogin) {
@@ -61,19 +61,21 @@ public class TestBase {
             TestHelper helper = new TestHelper();
             helper.logIn(userLogin, userPassword);
         }
-        Driver.get().navigate().to("https://github.com/"+userLogin+"/"+repoName);
-        RepoSettingsPage settingsPage = new RepoOpenedPage().goToSettings();
+        RepoOpenedPage repoOpenedPage = new RepoOpenedPage();
+        repoOpenedPage.open("https://github.com/"+userLogin+"/"+repoName);
+        RepoSettingsPage settingsPage = repoOpenedPage.goToSettings();
         settingsPage.deleteRepoButton().click();
         settingsPage.deleteRepo(repoName);
     }
 
     private void resetProfileInfo() {
-        Driver.get().get("https://github.com/settings/profile");
         EditProfilePage editProfilePage = new EditProfilePage();
+        editProfilePage.open("https://github.com/settings/profile");
         editProfilePage.upDateAvatar(new File("src/main/resources/no_unicorn.png").getAbsolutePath()).deleteAllInfoFromProfile();
     }
 
     public void setNeedToRelogin(Boolean needToRelogin) {
         this.needToRelogin = needToRelogin;
     }
+
 }

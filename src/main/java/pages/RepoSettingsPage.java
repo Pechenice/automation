@@ -33,11 +33,11 @@ public class RepoSettingsPage extends BasePage {
     protected void verifySettings() throws Exception {
         List<WebElement> listOfElementsToCheck = Driver.get().findElements(By.cssSelector("button[data-facebox='#delete_repo_confirm']"));
         if (listOfElementsToCheck.size() == 0) {
-            throw new Exception("Delete this repository button is absent on Settings page.");
+            throw new Exception("Delete this repository button is absent on Repo Settings page.");
         }
         WebElement deleteRepo = listOfElementsToCheck.get(0);
         if (!deleteRepo.isEnabled()) {
-            throw new Exception("Delete this repository button is not clickable on Settings page.");
+            throw new Exception("Delete this repository button is not clickable on Repo Settings page.");
         }
     }
 }
